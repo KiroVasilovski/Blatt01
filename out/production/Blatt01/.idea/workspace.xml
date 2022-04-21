@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="" />
+    <list default="true" id="2b933ad2-585d-41ea-ad32-818b37418fc4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,47 +13,29 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="286msV3dgZSW6WpYRnwYWBpxqGW" />
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\kirov\OneDrive\Desktop\BachelorInformatik\8Semester\DatenbankenUndInformationssysteme\workspace\Blatt01\src\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="286kC4XXbWNONIg6crvbHJ1uQgu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
-  </component>
-  <component name="RunManager">
-    <configuration name="DbConnectionManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Blatt01" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="de.dis.data.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="de.dis.data" />
-      <option name="MAIN_CLASS_NAME" value="de.dis.data.DbConnectionManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.DbConnectionManagerTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -70,18 +54,18 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="" />
-      <created>1650545616347</created>
+      <changelist id="2b933ad2-585d-41ea-ad32-818b37418fc4" name="Default Changelist" comment="" />
+      <created>1650544291585</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1650545616347</updated>
+      <updated>1650544291585</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2584" y="434" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1650545662381">
+    <state x="2660" y="296" key="FileChooserDialogImpl" timestamp="1650544678581">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2584" y="434" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1650545662381" />
+    <state x="2660" y="296" key="FileChooserDialogImpl/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1650544678581" />
   </component>
 </project>
