@@ -85,6 +85,10 @@ public class Makler {
         return (String) store.get(Column.LOGIN);
     }
 
+    public String getPassword() {
+        return (String) store.get(Column.PASSWORD);
+    }
+
     public void setName(String name) {
         store.set(Column.NAME, name);
     }
