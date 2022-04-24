@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/PurchaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/PurchaseContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/TenancyContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/TenancyContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/store/DbRowFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/store/DbRowFactory.java" afterDir="false" />
-    </list>
+    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +29,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="286msV3dgZSW6WpYRnwYWBpxqGW" />
   <component name="ProjectViewState">
@@ -132,7 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650545616347</updated>
       <workItem from="1650724505185" duration="6986000" />
-      <workItem from="1650731805914" duration="30837000" />
+      <workItem from="1650731805914" duration="31673000" />
     </task>
     <task id="LOCAL-00001" summary="Storage utility:&#10;- added DbColumn&#10;- added DbRow&#10;- added DbRowFactory&#10;&#10;Model:&#10;- moved Makler (needs renaming to EstateAgent)&#10;- added Estate&#10;- added House&#10;- added Apartment">
       <created>1650787758952</created>
@@ -148,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650810544701</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent">
+      <created>1650812666199</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650812666199</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +160,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Storage utility:&#10;- added DbColumn&#10;- added DbRow&#10;- added DbRowFactory&#10;&#10;Model:&#10;- moved Makler (needs renaming to EstateAgent)&#10;- added Estate&#10;- added House&#10;- added Apartment" />
     <MESSAGE value="Model:&#10;- added Person&#10;- added Contract&#10;  - added PurchaseContract&#10;  - added TenancyContract" />
-    <option name="LAST_COMMIT_MESSAGE" value="Model:&#10;- added Person&#10;- added Contract&#10;  - added PurchaseContract&#10;  - added TenancyContract" />
+    <MESSAGE value="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent" />
   </component>
 </project>

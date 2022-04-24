@@ -155,7 +155,7 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
                     if (!rs.next()) return null;
                     Map<T, Object> initialValues = new HashMap<>();
                     for (T _column : columns) {
-                        initialValues.put(column, rs.getObject(_column.title()));
+                        initialValues.put(_column, rs.getObject(_column.title()));
                     }
                     return new Row(rs.getObject(idColumn.title()), initialValues);
                 }
