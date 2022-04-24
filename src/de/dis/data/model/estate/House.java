@@ -7,7 +7,9 @@ import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class House extends Estate {
     enum Column implements DbColumn {
@@ -52,6 +54,16 @@ public class House extends Estate {
         DbRow<Estate.Column> estateStore = Estate.dbRowFactory.load(id);
 
         return new House(store, estateStore);
+    }
+
+    public static Set<House> getManagedBy(Makler makler) {
+        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAllWhere(Estate.Column.ESTATE_AGENT, makler.getId());
+        Set<House> result = new HashSet<>();
+        if (rows == null || rows.isEmpty()) return result;
+        for (DbRow<Estate.Column> row : rows) {
+            result.add(get((int) row.getId()));
+        }
+        return result;
     }
 
     public static House create(String city, String postalCode, String street, String streetNumber, int squareArea, Makler estateAgent, int floors, int price, boolean garden) {

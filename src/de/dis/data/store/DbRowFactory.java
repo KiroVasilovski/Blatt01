@@ -130,19 +130,34 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
 
         if (cache.containsKey(id)) return cache.get(id);
 
+        return loadWhere(idColumn, id);
+    }
+
+    /**
+     * Load the first row where the specified column matches the specified value
+     * and return it as a DbRow object.
+     *
+     * @param column the column to filter by
+     * @param value the value to filter for
+     * @return a DbRow corresponding to the **first** row matching the value, or null if none were found
+     */
+    public DbRow<T> loadWhere(T column, Object value) {
+        Objects.requireNonNull(column);
+        Objects.requireNonNull(value);
+
         Connection con = getConnection();
-        String query = DbStatement.select(table, idColumn);
+        String query = DbStatement.select(table, column);
 
         try {
             try (PreparedStatement statement = con.prepareStatement(query)) {
-                statement.setObject(1, id, idColumn.type());
+                statement.setObject(1, value, column.type());
                 try (ResultSet rs = statement.executeQuery()) {
                     if (!rs.next()) return null;
                     Map<T, Object> initialValues = new HashMap<>();
-                    for (T column : columns) {
-                        initialValues.put(column, rs.getObject(column.title()));
+                    for (T _column : columns) {
+                        initialValues.put(column, rs.getObject(_column.title()));
                     }
-                    return new Row(id, initialValues);
+                    return new Row(rs.getObject(idColumn.title()), initialValues);
                 }
             }
         } catch (SQLException e) {
@@ -257,28 +272,48 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
      * @return a Set containing corresponding DbRow objects for all rows of the table, or null if an error occurred
      */
     public Set<DbRow<T>> loadAll() {
+        return _loadAllWhere(null, null);
+    }
+
+    /**
+     * Get a set of all rows of the table where the specified column matches the specified value.
+     *
+     * @param column the column to filter by
+     * @param value the value to filter for
+     * @return a Set containing corresponding DbRow objects for all matching rows of the table, or null if an error occurred
+     */
+    public Set<DbRow<T>> loadAllWhere(T column, Object value) {
+        Objects.requireNonNull(column);
+        Objects.requireNonNull(value);
+
+        return _loadAllWhere(column, value);
+    }
+
+    private Set<DbRow<T>> _loadAllWhere(T _column, Object _value) {
         Connection con = getConnection();
-        String query = DbStatement.select(table);
+        String query = _column == null ? DbStatement.select(table) : DbStatement.select(table, _column);
 
         Set<DbRow<T>> result = new HashSet<>();
 
         try {
-            try (PreparedStatement statement = con.prepareStatement(query);
-                 ResultSet rs = statement.executeQuery()) {
-                while (rs.next()) {
-                    Object id = rs.getObject(idColumn.title());
-                    if (cache.containsKey(id)) {
-                        result.add(cache.get(id));
-                    } else {
-                        Map<T, Object> initialValues = new HashMap<>();
-                        for (T column : columns) {
-                            initialValues.put(column, rs.getObject(column.title()));
+            try (PreparedStatement statement = con.prepareStatement(query)) {
+                if (_column != null) statement.setObject(1, _value, _column.type());
+                try (ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                        Object id = rs.getObject(idColumn.title());
+                        if (cache.containsKey(id)) {
+                            result.add(cache.get(id));
+                        } else {
+                            Map<T, Object> initialValues = new HashMap<>();
+                            for (T column : columns) {
+                                initialValues.put(column, rs.getObject(column.title()));
+                            }
+                            result.add(new Row(id, initialValues));
                         }
-                        result.add(new Row(id, initialValues));
                     }
-                }
 
-                return result;
+                    return result;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

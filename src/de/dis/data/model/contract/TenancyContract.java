@@ -9,7 +9,9 @@ import java.sql.Date;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class TenancyContract extends Contract {
     enum Column implements DbColumn {
@@ -55,6 +57,22 @@ public class TenancyContract extends Contract {
         DbRow<Contract.Column> estateStore = Contract.dbRowFactory.load(id);
 
         return new TenancyContract(store, estateStore);
+    }
+
+    public static Set<TenancyContract> getRentedBy(Person renter) {
+        Set<DbRow<Column>> rows = dbRowFactory.loadAllWhere(Column.RENTER, renter);
+        Set<TenancyContract> result = new HashSet<>();
+        if (rows == null) return result;
+        for (DbRow<Column> row : rows) {
+            result.add(get((int) row.getId()));
+        }
+        return result;
+    }
+
+    public static TenancyContract getForApartment(Apartment apartment) {
+        DbRow<Column> row = dbRowFactory.loadWhere(Column.APARTMENT, apartment);
+        if (row == null) return null;
+        return get((int) row.getId());
     }
 
     public static TenancyContract create(String place, LocalDate startDate, int duration, Person renter, Apartment apartment) {
