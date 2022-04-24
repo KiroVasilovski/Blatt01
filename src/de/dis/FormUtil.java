@@ -26,6 +26,25 @@ public class FormUtil {
 		
 		return ret;
 	}
+
+	/**
+	 * Liest einen Boolean vom standard input ein
+	 * @param label Zeile, die vor der Eingabe gezeigt wird
+	 * @return eingelesener Boolean
+	 */
+	public static boolean readBoolean(String label) {
+		boolean ret = false;
+		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+
+		try {
+			System.out.print(label+" (+ oder -): ");
+			ret = stdin.readLine().trim().equals("+");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return ret;
+	}
 	
 	/**
 	 * Liest einen Integer vom standard input ein
