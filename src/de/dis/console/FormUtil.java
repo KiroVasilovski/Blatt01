@@ -1,4 +1,4 @@
-package de.dis;
+package de.dis.console;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -67,5 +67,13 @@ public class FormUtil {
 		}
 		
 		return ret;
+	}
+
+	public static <T> T readSelection(String label, MenuOption<T>... options) {
+		Menu<T> menu = new Menu<T>(label);
+		for (MenuOption<T> option : options) {
+			menu.addEntry(option);
+		}
+		return menu.show();
 	}
 }

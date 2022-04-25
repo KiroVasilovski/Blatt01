@@ -1,4 +1,4 @@
-package de.dis;
+package de.dis.console;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,10 +25,10 @@ import java.util.ArrayList;
  * [3] Nach Hause gehen
  * --
  */
-public class Menu {
+public class Menu<T> {
 	private String title;
-	private ArrayList<String> labels = new ArrayList<String>();
-	private ArrayList<Integer> returnValues = new ArrayList<Integer>();
+	private ArrayList<String> labels = new ArrayList<>();
+	private ArrayList<T> returnValues = new ArrayList<T>();
 	
 	/**
 	 * Konstruktor.
@@ -44,16 +44,21 @@ public class Menu {
 	 * @param label Name des Eintrags
 	 * @param returnValue Konstante, die bei Wahl dieses Eintrags zurückgegeben wird
 	 */
-	public void addEntry(String label, int returnValue) {
+	public void addEntry(String label, T returnValue) {
 		this.labels.add(label);
-		this.returnValues.add(Integer.valueOf(returnValue));
+		this.returnValues.add(returnValue);
+	}
+
+	public void addEntry(MenuOption<T> option) {
+		this.labels.add(option.label());
+		this.returnValues.add(option.value());
 	}
 	
 	/**
 	 * Zeigt das Menü an
 	 * @return Die Konstante des ausgewählten Menüeintrags
 	 */
-	public int show()  {
+	public T show()  {
 		int selection = -1;
 		
 		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -68,12 +73,10 @@ public class Menu {
 			System.out.print("-- ");
 			try {
 				selection = Integer.parseInt(stdin.readLine());
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
+			} catch (NumberFormatException | IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			if(selection < 1 || selection > returnValues.size()) {
 				System.err.println("Ungültige Eingabe!");
 				selection = -1;

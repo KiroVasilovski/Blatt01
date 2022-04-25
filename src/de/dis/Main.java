@@ -1,5 +1,7 @@
 package de.dis;
 
+import de.dis.console.FormUtil;
+import de.dis.console.Menu;
 import de.dis.data.model.Makler;
 
 import java.io.BufferedReader;
@@ -28,7 +30,7 @@ public class Main {
         final int QUIT = 3;
 
         //Erzeuge Menü
-        Menu mainMenu = new Menu("Hauptmenü");
+        Menu<Integer> mainMenu = new Menu("Hauptmenü");
         mainMenu.addEntry("Makler-Verwaltung", MENU_MAKLER);
         mainMenu.addEntry("Immobilien-Verwaltung", MENU_ESTATE);
         mainMenu.addEntry("Vertragsverwaltung", MENU_CONTRACT);
@@ -83,7 +85,7 @@ public class Main {
         final int BACK = 1;
 
         //Maklerverwaltungsmenü
-        Menu maklerMenu = new Menu("Makler-Verwaltung");
+        Menu<Integer> maklerMenu = new Menu("Makler-Verwaltung");
         maklerMenu.addEntry("Neuer Makler", NEW_MAKLER);
         maklerMenu.addEntry("Zurück zum Hauptmenü", BACK);
 
@@ -127,7 +129,7 @@ public class Main {
         final int BACK = 3;
 
         //Immobilienverwaltungsmenü
-        Menu estateMenu = new Menu("Immobilien-Verwaltung");
+        Menu<Integer> estateMenu = new Menu("Immobilien-Verwaltung");
         estateMenu.addEntry("Neue Immobilie", NEW_ESTATE);
         estateMenu.addEntry("Immobilie entfernen", DEL_ESTATE);
         estateMenu.addEntry("Immobilie bearbeiten", UPDATE_ESTATE);

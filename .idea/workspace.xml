@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/DbConnectionManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/DbConnectionManagerTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/de/dis/console/MenuOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/FormUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/console/FormUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/Makler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/Makler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/console/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Record" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -43,21 +43,18 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/kirov/OneDrive/Desktop/BachelorInformatik/8Semester/DatenbankenUndInformationssysteme/JK/exercise2_team02_jan-kadel_alexandra-lemke/exercise2_team02_jan-kadel_alexandra-lemke/Java Code",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.dis.Main" />
       <module name="Blatt01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.dis.*" />
+          <option name="PATTERN" value="de.dis.console.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
