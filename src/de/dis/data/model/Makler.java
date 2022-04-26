@@ -7,6 +7,7 @@ import de.dis.data.store.DbRowFactory;
 import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Makler {
     enum Column implements DbColumn {
@@ -54,6 +55,12 @@ public class Makler {
         return new Makler(store);
     }
 
+    public static Makler getByLogin(String login) {
+        DbRow<Column> store = dbRowFactory.loadWhere(Column.LOGIN, login);
+        if (store == null) return null;
+        return new Makler(store);
+    }
+
     public static Makler create(String name, String address, String login, String password) {
         DbRow<Column> store =
                 dbRowFactory.create(name, address, login, password);
@@ -84,9 +91,10 @@ public class Makler {
     public String getLogin() {
         return (String) store.get(Column.LOGIN);
     }
-
-    public String getPassword() {
-        return (String) store.get(Column.PASSWORD);
+    
+    public boolean comparePassword(String password) {
+        Objects.requireNonNull(password);
+        return password.equals((String) store.get(Column.PASSWORD));
     }
 
     public void setName(String name) {

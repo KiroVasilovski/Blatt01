@@ -4,4 +4,4 @@
 /.idea/
 /out/
 /src/.idea
-*.class
+*/*.class

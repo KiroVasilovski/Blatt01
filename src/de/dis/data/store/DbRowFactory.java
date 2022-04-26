@@ -55,7 +55,19 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
 
         @Override
         public void set(T column, Object value) {
-            values.put(column, value);
+            String query = DbStatement.update(table, new DbColumn[]{column}, idColumn);
+
+            Connection con = getConnection();
+
+            try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setObject(1, value, column.type());
+                statement.setObject(2, id, idColumn.type());
+                statement.executeUpdate();
+
+                values.put(column, value);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -72,6 +84,25 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
                 throw new IllegalArgumentException(
                         String.format("%d columns required, but %d values provided",
                                 columns.length, newValues.length));
+
+            String query = DbStatement.update(table, columns, idColumn);
+
+            Connection con = getConnection();
+
+            try (PreparedStatement statement = con.prepareStatement(query)) {
+                for (int i = 0; i < columns.length; i++) {
+                    T column = columns[i];
+                    statement.setObject(i + 1, newValues[i], column.type());
+                }
+                statement.setObject(columns.length + 1, id, idColumn.type());
+                statement.executeUpdate();
+
+                for (int i = 0; i < columns.length; i++) {
+                    values.put(columns[i], newValues[i]);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             for (int i = 0; i < columns.length; i++) {
                 values.put(columns[i], newValues[i]);
@@ -138,7 +169,7 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
      * and return it as a DbRow object.
      *
      * @param column the column to filter by
-     * @param value the value to filter for
+     * @param value  the value to filter for
      * @return a DbRow corresponding to the **first** row matching the value, or null if none were found
      */
     public DbRow<T> loadWhere(T column, Object value) {
@@ -279,7 +310,7 @@ public class DbRowFactory<T extends Enum<T> & DbColumn> {
      * Get a set of all rows of the table where the specified column matches the specified value.
      *
      * @param column the column to filter by
-     * @param value the value to filter for
+     * @param value  the value to filter for
      * @return a Set containing corresponding DbRow objects for all matching rows of the table, or null if an error occurred
      */
     public Set<DbRow<T>> loadAllWhere(T column, Object value) {
