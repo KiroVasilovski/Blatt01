@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/de/dis/console/MenuOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/FormUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/console/FormUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/console/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" afterDir="false" />
+    </list>
+    <list id="69e443ab-baac-4c06-9ae6-683ff67b8dad" name="Changes by admin" comment="">
+      <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,18 +40,36 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java">
+      <ranges>
+        <range start1="69" end1="69" start2="69" end2="79" changelist="69e443ab-baac-4c06-9ae6-683ff67b8dad" />
+        <range start1="80" end1="80" start2="90" end2="95" changelist="930bb54a-79a6-4182-b42e-809793b46fe0" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/de/dis/Main.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="930bb54a-79a6-4182-b42e-809793b46fe0" />
+        <range start1="5" end1="5" start2="6" end2="8" changelist="930bb54a-79a6-4182-b42e-809793b46fe0" />
+        <range start1="9" end1="9" start2="12" end2="15" changelist="69e443ab-baac-4c06-9ae6-683ff67b8dad" />
+        <range start1="143" end1="144" start2="149" end2="150" changelist="930bb54a-79a6-4182-b42e-809793b46fe0" />
+        <range start1="149" end1="150" start2="155" end2="156" changelist="930bb54a-79a6-4182-b42e-809793b46fe0" />
+        <range start1="156" end1="156" start2="162" end2="252" changelist="930bb54a-79a6-4182-b42e-809793b46fe0" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="286msV3dgZSW6WpYRnwYWBpxqGW" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "codeWithMe.voiceChat.enabledByDefault": "false"
+  }
+}]]></component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.dis.Main" />

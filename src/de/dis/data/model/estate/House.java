@@ -66,6 +66,16 @@ public class House extends Estate {
         return result;
     }
 
+    public static Set<House> getAll() {
+        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAll();
+        Set<House> result = new HashSet<>();
+        if (rows == null || rows.isEmpty()) return result;
+        for (DbRow<Estate.Column> row : rows) {
+            result.add(get((int) row.getId()));
+        }
+        return result;
+    }
+
     public static House create(String city, String postalCode, String street, String streetNumber, int squareArea, Makler estateAgent, int floors, int price, boolean garden) {
         DbRow<Estate.Column> estateStore =
                 Estate.dbRowFactory.create(city, postalCode, street, streetNumber, squareArea, estateAgent.getId());

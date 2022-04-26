@@ -68,6 +68,16 @@ public class Apartment extends Estate {
         return result;
     }
 
+    public static Set<Apartment> getAll() {
+        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAll();
+        Set<Apartment> result = new HashSet<>();
+        if (rows == null || rows.isEmpty()) return result;
+        for (DbRow<Estate.Column> row : rows) {
+            result.add(get((int) row.getId()));
+        }
+        return result;
+    }
+
     public static Apartment create(String city, String postalCode, String street, String streetNumber, int squareArea, Makler estateAgent, int floor, int rent, int rooms, boolean balcony, boolean kitchen) {
         DbRow<Estate.Column> estateStore =
                 Estate.dbRowFactory.create(city, postalCode, street, streetNumber, squareArea, estateAgent.getId());
@@ -77,6 +87,11 @@ public class Apartment extends Estate {
         if (store == null) return null;
 
         return new Apartment(store, estateStore);
+    }
+
+    public static void delete(Apartment apartment){
+        Estate.dbRowFactory.delete(apartment.getId());
+        cache.remove(apartment.getId());
     }
 
     private final DbRow<Column> store;
