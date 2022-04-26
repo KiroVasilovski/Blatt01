@@ -55,7 +55,7 @@ public class DbStatement {
      * @return `DELETE * FROM table WHERE whereColumn = ?`
      */
     public static String delete(String table, DbColumn whereColumn) {
-        return String.format("DELETE FROM %s WHERE", table, asAssignment(whereColumn));
+        return String.format("DELETE FROM %s WHERE %s", table, asAssignment(whereColumn));
     }
 
     /**

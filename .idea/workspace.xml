@@ -3,8 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="- removed estate menu logic from Main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory$Row.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory$Row.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory.class" afterDir="false" />
+>>>>>>> master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650973638369</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- fixed estates being listed under wrong estate type">
+      <created>1650994713842</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650994713842</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +198,8 @@
     <MESSAGE value="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent" />
     <MESSAGE value="- added EstateMenu&#10;- fix set in DbRowFactory" />
     <MESSAGE value="- removed estate menu logic from Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="- removed estate menu logic from Main" />
+    <MESSAGE value="- fixed estates being listed under wrong estate type" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fixed estates being listed under wrong estate type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
