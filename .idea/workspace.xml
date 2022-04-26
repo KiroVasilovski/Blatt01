@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent">
+    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="- removed estate menu logic from Main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory$Row.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory$Row.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +39,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
   </component>
@@ -51,6 +50,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -116,7 +116,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.DbConnectionManagerTest.testValueFetch" />
         <item itemvalue="JUnit.DbConnectionManagerTest.testConnectionEstablished" />
         <item itemvalue="JUnit.DbConnectionManagerTest" />
       </list>
@@ -169,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650812666199</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- added EstateMenu&#10;- fix set in DbRowFactory">
+      <created>1650973638369</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650973638369</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,13 +185,19 @@
     <MESSAGE value="Storage utility:&#10;- added DbColumn&#10;- added DbRow&#10;- added DbRowFactory&#10;&#10;Model:&#10;- moved Makler (needs renaming to EstateAgent)&#10;- added Estate&#10;- added House&#10;- added Apartment" />
     <MESSAGE value="Model:&#10;- added Person&#10;- added Contract&#10;  - added PurchaseContract&#10;  - added TenancyContract" />
     <MESSAGE value="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent" />
+    <MESSAGE value="- added EstateMenu&#10;- fix set in DbRowFactory" />
+    <MESSAGE value="- removed estate menu logic from Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="- removed estate menu logic from Main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="java-exception" />
-      </default-breakpoints>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/de/dis/data/model/estate/Estate.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

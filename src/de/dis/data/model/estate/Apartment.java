@@ -55,6 +55,8 @@ public class Apartment extends Estate {
         DbRow<Column> store = dbRowFactory.load(id);
         DbRow<Estate.Column> estateStore = Estate.dbRowFactory.load(id);
 
+        if (estateStore == null || store == null) return null;
+
         return new Apartment(store, estateStore);
     }
 
@@ -73,7 +75,8 @@ public class Apartment extends Estate {
         Set<Apartment> result = new HashSet<>();
         if (rows == null || rows.isEmpty()) return result;
         for (DbRow<Estate.Column> row : rows) {
-            result.add(get((int) row.getId()));
+            Apartment apartment = get((int) row.getId());
+            if (apartment != null) result.add(apartment);
         }
         return result;
     }
