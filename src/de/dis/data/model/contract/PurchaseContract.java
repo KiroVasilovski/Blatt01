@@ -59,6 +59,17 @@ public class PurchaseContract extends Contract {
         return new PurchaseContract(store, estateStore);
     }
 
+    public static Set<PurchaseContract> getAll() {
+        Set<DbRow<Contract.Column>> rows = Contract.dbRowFactory.loadAll();
+        Set<PurchaseContract> result = new HashSet<>();
+        if (rows == null || rows.isEmpty()) return result;
+        for (DbRow<Contract.Column> row : rows) {
+            PurchaseContract contract = get((int) row.getId());
+            if (contract != null) result.add(contract);
+        }
+        return result;
+    }
+
     public static Set<PurchaseContract> getPurchasedBy(Person buyer) {
         Set<DbRow<Column>> rows = dbRowFactory.loadAllWhere(Column.BUYER, buyer);
         Set<PurchaseContract> result = new HashSet<>();

@@ -6,7 +6,9 @@ import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Person {
     enum Column implements DbColumn {
@@ -51,6 +53,18 @@ public class Person {
                 dbRowFactory.load(id);
         if (store == null) return null;
         return new Person(store);
+    }
+
+    // TODO all these getAll and create methods are rather redundant
+    public static Set<Person> getAll() {
+        Set<DbRow<Column>> rows = dbRowFactory.loadAll();
+        Set<Person> result = new HashSet<>();
+        if (rows == null || rows.isEmpty()) return result;
+        for (DbRow<Column> row : rows) {
+            Person contract = get((int) row.getId());
+            if (contract != null) result.add(contract);
+        }
+        return result;
     }
 
     public static Person create(String firstName, String name, String address) {

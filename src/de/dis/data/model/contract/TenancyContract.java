@@ -59,6 +59,17 @@ public class TenancyContract extends Contract {
         return new TenancyContract(store, estateStore);
     }
 
+    public static Set<TenancyContract> getAll() {
+        Set<DbRow<Contract.Column>> rows = Contract.dbRowFactory.loadAll();
+        Set<TenancyContract> result = new HashSet<>();
+        if (rows == null || rows.isEmpty()) return result;
+        for (DbRow<Contract.Column> row : rows) {
+            TenancyContract contract = get((int) row.getId());
+            if (contract != null) result.add(contract);
+        }
+        return result;
+    }
+
     public static Set<TenancyContract> getRentedBy(Person renter) {
         Set<DbRow<Column>> rows = dbRowFactory.loadAllWhere(Column.RENTER, renter);
         Set<TenancyContract> result = new HashSet<>();
