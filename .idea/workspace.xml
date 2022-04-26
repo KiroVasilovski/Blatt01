@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="- removed estate menu logic from Main">
+      <change afterPath="$PROJECT_DIR$/src/de/dis/data/model/ModelObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/de/dis/data/model/PartitionedModelObjectFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person$Column.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/PurchaseContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/PurchaseContract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/TenancyContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/TenancyContract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/ModelObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/ModelObjectFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Record" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -36,9 +34,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="286msV3dgZSW6WpYRnwYWBpxqGW" />
   <component name="ProjectViewState">
@@ -83,7 +78,7 @@
       <module name="Blatt01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.dis.data.*" />
+          <option name="PATTERN" value="de.dis.data.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,7 +94,7 @@
       <module name="Blatt01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.dis.data.*" />
+          <option name="PATTERN" value="de.dis.data.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -180,7 +175,42 @@
       <option name="project" value="LOCAL" />
       <updated>1650994713842</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- fix delete not applying">
+      <created>1650997776841</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1650997776841</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- added FormUtil.readDate">
+      <created>1651010144965</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651010144965</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- added getAll to TenancyContract, PurchaseContract and Person">
+      <created>1651010713303</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651010713303</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- added beginning of ModelObjectFactory">
+      <created>1651011411942</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651011411942</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- fixed NPE in House.getAll and Apartment.getManagedBy">
+      <created>1651011624540</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651011624540</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +223,8 @@
     <MESSAGE value="- added EstateMenu&#10;- fix set in DbRowFactory" />
     <MESSAGE value="- removed estate menu logic from Main" />
     <MESSAGE value="- fixed estates being listed under wrong estate type" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fixed estates being listed under wrong estate type" />
+    <MESSAGE value="- fixed NPE in House.getAll and Apartment.getManagedBy" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fixed NPE in House.getAll and Apartment.getManagedBy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
