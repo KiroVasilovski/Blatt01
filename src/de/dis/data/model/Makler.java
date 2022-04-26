@@ -68,6 +68,11 @@ public class Makler {
         return new Makler(store);
     }
 
+    public static void delete(Makler makler){
+        Makler.dbRowFactory.delete(makler.getId());
+        cache.remove(makler.getId());
+    }
+
     private final DbRow<Column> store;
 
     private Makler(DbRow<Column> store) {

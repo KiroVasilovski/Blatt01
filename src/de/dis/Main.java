@@ -3,7 +3,9 @@ package de.dis;
 import de.dis.console.FormUtil;
 import de.dis.console.Menu;
 import de.dis.data.model.Makler;
+import de.dis.menu.ContractMenu;
 import de.dis.menu.EstateMenu;
+import de.dis.menu.MaklerMenu;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,7 +52,7 @@ public class Main {
                         for (int i = 3; i > 0; i--){
                             String input = stdin.readLine();
                             if (input.equals("passwort")) {
-                                showMaklerMenu();
+                                MaklerMenu.showMaklerMenu();
                                 break;
                             } else {
                                 System.out.println("Falsches Passwort! Sie haben noch " + (i -1) + " Versuche");
@@ -66,6 +68,8 @@ public class Main {
 
                     EstateMenu estateMenu = new EstateMenu(m);
                     estateMenu.showEstateMenu();
+                case MENU_CONTRACT:
+                    ContractMenu.showContractMenu();
                 case QUIT:
                     return;
             }
@@ -85,46 +89,5 @@ public class Main {
         return null;
     }
 
-    /**
-     * Zeigt die Maklerverwaltung
-     */
-    public static void showMaklerMenu() {
-        //Menüoptionen
-        final int NEW_MAKLER = 0;
-        final int BACK = 1;
-
-        //Maklerverwaltungsmenü
-        Menu<Integer> maklerMenu = new Menu("Makler-Verwaltung");
-        maklerMenu.addEntry("Neuer Makler", NEW_MAKLER);
-        maklerMenu.addEntry("Zurück zum Hauptmenü", BACK);
-
-        //Verarbeite Eingabe
-        while (true) {
-            int response = maklerMenu.show();
-
-            switch (response) {
-                case NEW_MAKLER:
-                    newMakler();
-                    break;
-                case BACK:
-                    return;
-            }
-        }
-    }
-
-    /**
-     * Legt einen neuen Makler an, nachdem der Benutzer
-     * die entprechenden Daten eingegeben hat.
-     */
-    public static void newMakler() {
-        Makler m = Makler.create(
-                FormUtil.readString("Name"),
-                FormUtil.readString("Addressse"),
-                FormUtil.readString("Login"),
-                FormUtil.readString("Passwort")
-        );
-
-        System.out.println("Makler mit der ID " + m.getId() + " wurde erzeugt.");
-    }
 }
 

@@ -53,9 +53,9 @@ public class Person {
         return new Person(store);
     }
 
-    public static Person create(String name, String address, String login, String password) {
+    public static Person create(String firstName, String name, String address) {
         DbRow<Column> store =
-                dbRowFactory.create(name, address, login, password);
+                dbRowFactory.create(firstName, name, address);
         if (store == null) return null;
         return new Person(store);
     }
