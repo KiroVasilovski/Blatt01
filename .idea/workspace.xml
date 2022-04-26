@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="- removed estate menu logic from Main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,8 @@
 package de.dis.menu;
 
+import de.dis.console.FormUtil;
 import de.dis.console.Menu;
+import de.dis.data.model.contract.Person;
 
 public class ContractMenu {
 
@@ -24,7 +26,7 @@ public class ContractMenu {
 
             switch(response) {
                 case NEW_PERSON:
-                    //newPerson();
+                    newPerson();
                     break;
                 case SIGN_CONTRACT:
                     //signContract();
@@ -38,4 +40,15 @@ public class ContractMenu {
         }
     }
 
+    /**
+     * Creates a new person.
+     */
+    public static void newPerson() {
+        Person p = Person.create(
+        FormUtil.readString("Vorname"),
+        FormUtil.readString("Nachname"),
+        FormUtil.readString("Adresse"));
+
+        System.out.println("Person mit der ID " + p.getId() + " wurde erzeugt.");
+    }
 }
