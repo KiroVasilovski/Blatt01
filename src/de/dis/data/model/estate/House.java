@@ -74,7 +74,8 @@ public class House extends Estate {
         Set<House> result = new HashSet<>();
         if (rows == null || rows.isEmpty()) return result;
         for (DbRow<Estate.Column> row : rows) {
-            result.add(get((int) row.getId()));
+            House house = get((int) row.getId());
+            if (house != null) result.add(house);
         }
         return result;
     }
