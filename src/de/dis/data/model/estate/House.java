@@ -87,6 +87,11 @@ public class House extends Estate {
         return new House(store, estateStore);
     }
 
+    public static void delete(House house){
+        Estate.dbRowFactory.delete(house.getId());
+        cache.remove(house.getId());
+    }
+
     private final DbRow<Column> store;
 
     private House(DbRow<Column> store, DbRow<Estate.Column> estateStore) {

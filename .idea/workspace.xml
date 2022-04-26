@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" afterDir="false" />
+    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="Data utility:&#10;- added DbRowFactory.loadWhere and DbRowFactory.loadAllWhere to filter entries by different columns&#10;&#10;Model:&#10;- added methods to TenancyContract and PurchaseContract to filter contracts by renter/buyer or estate&#10;- added methods to Apartment and House to filter estates by estate agent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/Makler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/Makler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/store/DbRowFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/store/DbRowFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +36,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -96,9 +97,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DbConnectionManagerTest.testValueFetch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Blatt01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.dis.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.dis.data" />
+      <option name="MAIN_CLASS_NAME" value="de.dis.data.DbConnectionManagerTest" />
+      <option name="METHOD_NAME" value="testValueFetch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.DbConnectionManagerTest.testValueFetch" />
         <item itemvalue="JUnit.DbConnectionManagerTest.testConnectionEstablished" />
         <item itemvalue="JUnit.DbConnectionManagerTest" />
       </list>
@@ -165,13 +183,9 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/dis/data/model/estate/Estate.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

@@ -126,6 +126,10 @@ public class Apartment extends Estate {
         store.set(Column.ROOMS, rooms);
     }
 
+    public void setFloor(int floor) {
+        store.set(Column.FLOOR, floor);
+    }
+
     public void setRent(int rent) {
         store.set(Column.RENT, rent);
     }
