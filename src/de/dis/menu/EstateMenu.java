@@ -129,11 +129,11 @@ public class EstateMenu {
         if (type == EstateType.HOUSE) {
              House house = selectHouse();
              House.delete(house);
-             System.out.println("Das ausgewählte Haus wurde gelöscht.");
+             System.out.println("Das Haus " + house + " wurde gelöscht.");
         }else if (type == EstateType.APARTMENT) {
             Apartment apartment = selectApartment();
             Apartment.delete(apartment);
-            System.out.println("Die ausgewählte Wohnung wurde gelöscht.");
+            System.out.println("Die Wohnung " + apartment + " wurde gelöscht.");
         }else {
             System.out.println("Immobilientyp " + type + " existiert nicht! Kehre zum Immobilienmenü zurück...");
         }

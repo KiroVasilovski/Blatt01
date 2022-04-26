@@ -3,17 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="- removed estate menu logic from Main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/DbStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/DbStatement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory$Row.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory$Row.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/store/DbRowFactory.class" afterDir="false" />
->>>>>>> master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
