@@ -6,6 +6,7 @@ import de.dis.data.model.Makler;
 import de.dis.menu.EstateMenu;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -44,7 +45,20 @@ public class Main {
 
             switch (response) {
                 case MENU_MAKLER:
-                    showMaklerMenu();
+                    System.out.println("Bitte Master-Passwort zur Makler-Verwaltung eingeben:");
+                    try {
+                        for (int i = 3; i > 0; i--){
+                            String input = stdin.readLine();
+                            if (input.equals("passwort")) {
+                                showMaklerMenu();
+                                break;
+                            } else {
+                                System.out.println("Falsches Passwort! Sie haben noch " + (i -1) + " Versuche");
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case MENU_ESTATE:
                     Makler m = maklerLogin();
