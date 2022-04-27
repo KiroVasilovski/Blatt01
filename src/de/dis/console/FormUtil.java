@@ -81,10 +81,13 @@ public class FormUtil {
 	 * @return das Objekt, das der Nutzer ausgewählt hat
 	 */
 	public static <T> T readSelection(String label, MenuOption<T>... options) {
+		if (options == null || options.length == 0) return null;
+
 		Menu<T> menu = new Menu<T>(label);
 		for (MenuOption<T> option : options) {
 			menu.addEntry(option);
 		}
+
 		return menu.show();
 	}
 

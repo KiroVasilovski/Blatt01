@@ -1,6 +1,7 @@
 package de.dis.data.model.contract;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.PartitionedModelObjectFactory;
 import de.dis.data.model.estate.House;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
@@ -8,9 +9,6 @@ import de.dis.data.store.DbRowFactory;
 import java.sql.Date;
 import java.sql.Types;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class PurchaseContract extends Contract {
@@ -48,58 +46,33 @@ public class PurchaseContract extends Contract {
     private static DbRowFactory<Column> dbRowFactory =
             new DbRowFactory<>("purchase_contract", Column.values());
 
-    private static Map<Integer, PurchaseContract> cache = new HashMap<>();
+    private static PartitionedModelObjectFactory<Column, Contract.Column, PurchaseContract> factory = new PartitionedModelObjectFactory(dbRowFactory, Contract.dbRowFactory, PurchaseContract::new);
 
     public static PurchaseContract get(int id) {
-        if (cache.containsKey(id)) return cache.get(id);
-
-        DbRow<Column> store = dbRowFactory.load(id);
-        DbRow<Contract.Column> estateStore = Contract.dbRowFactory.load(id);
-
-        return new PurchaseContract(store, estateStore);
+        return factory.get(id);
     }
 
     public static Set<PurchaseContract> getAll() {
-        Set<DbRow<Contract.Column>> rows = Contract.dbRowFactory.loadAll();
-        Set<PurchaseContract> result = new HashSet<>();
-        if (rows == null || rows.isEmpty()) return result;
-        for (DbRow<Contract.Column> row : rows) {
-            PurchaseContract contract = get((int) row.getId());
-            if (contract != null) result.add(contract);
-        }
-        return result;
+        return factory.getAll();
     }
 
     public static Set<PurchaseContract> getPurchasedBy(Person buyer) {
-        Set<DbRow<Column>> rows = dbRowFactory.loadAllWhere(Column.BUYER, buyer);
-        Set<PurchaseContract> result = new HashSet<>();
-        if (rows == null) return result;
-        for (DbRow<Column> row : rows) {
-            result.add(get((int) row.getId()));
-        }
-        return result;
+        return factory.getAllWhereChild(Column.BUYER, buyer.getId());
     }
 
     public static PurchaseContract getForHouse(House house) {
-        DbRow<Column> row = dbRowFactory.loadWhere(Column.HOUSE, house);
-        if (row == null) return null;
-        return get((int) row.getId());
+        return factory.getWhereChild(Column.HOUSE, house.getId());
     }
 
     public static PurchaseContract create(String place, int noInstallments, float interestRate, Person buyer, House house) {
-        DbRow<Contract.Column> contractStore =
-                Contract.dbRowFactory.create(Date.valueOf(LocalDate.now()), place);
-        if (contractStore == null) return null;
-        Object id = contractStore.getId();
-        DbRow<Column> store = dbRowFactory.createWithId(id, noInstallments, interestRate, buyer.getId(), house.getId());
-        if (store == null) return null;
-
-        return new PurchaseContract(store, contractStore);
+        return factory.create(
+                new Object[]{Date.valueOf(LocalDate.now()), place},
+                new Object[]{noInstallments, interestRate, buyer.getId(), house.getId()});
     }
 
     private final DbRow<Column> store;
 
-    private PurchaseContract(DbRow<Column> store, DbRow<Contract.Column> contractStore) {
+    private PurchaseContract(DbRow<Contract.Column> contractStore, DbRow<Column> store) {
         super(contractStore);
 
         this.store = store;
@@ -119,5 +92,10 @@ public class PurchaseContract extends Contract {
 
     public House getHouse() {
         return House.get((int) store.get(Column.HOUSE));
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s | %s | %s", super.toString(), getHouse(), getBuyer());
     }
 }

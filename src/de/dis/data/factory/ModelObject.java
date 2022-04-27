@@ -1,4 +1,4 @@
-package de.dis.data.model;
+package de.dis.data.factory;
 
 public interface ModelObject {
     public int getId();

@@ -3,13 +3,13 @@ package de.dis.menu;
 import de.dis.console.FormUtil;
 import de.dis.console.Menu;
 import de.dis.console.MenuOption;
+import de.dis.data.model.Makler;
 import de.dis.data.model.contract.Person;
 import de.dis.data.model.contract.PurchaseContract;
 import de.dis.data.model.contract.TenancyContract;
 import de.dis.data.model.estate.Apartment;
 import de.dis.data.model.estate.House;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +18,13 @@ public class ContractMenu {
 
     enum ContractType {PURCHASECONTRACT, TENANCYCONTRACT}
 
-    public static void showContractMenu() {
+    private final Makler makler;
+
+    public ContractMenu(Makler makler) {
+        this.makler = makler;
+    }
+
+    public void showContractMenu() {
         //Menüoptionen
         final int NEW_PERSON = 0;
         final int SIGN_CONTRACT = 1;
@@ -33,23 +39,17 @@ public class ContractMenu {
         contractMenu.addEntry("Zurück zum Hauptmenü", BACK);
 
         //Verarbeite Eingabe
-        while(true) {
+        boolean remain = true;
+        do {
             int response = contractMenu.show();
 
-            switch(response) {
-                case NEW_PERSON:
-                    newPerson();
-                    break;
-                case SIGN_CONTRACT:
-                    createContract();
-                    break;
-                case SHOW_CONTRACTS:
-                    showContracts();
-                    break;
-                case BACK:
-                    return;
+            switch (response) {
+                case NEW_PERSON -> newPerson();
+                case SIGN_CONTRACT -> createContract();
+                case SHOW_CONTRACTS -> showContracts();
+                case BACK -> remain = false;
             }
-        }
+        } while (remain);
     }
 
     private static ContractMenu.ContractType selectContractType() {
@@ -58,8 +58,8 @@ public class ContractMenu {
                 new MenuOption<>("Tenancy Contract", ContractMenu.ContractType.TENANCYCONTRACT));
     }
 
-    private static House selectHouse() {
-        Set<House> houses = House.getAll();
+    private House selectHouse() {
+        Set<House> houses = House.getManagedBy(makler);
         List<MenuOption<House>> list = new ArrayList<>();
         for (House house : houses) {
             MenuOption<House> houseMenuOption = new MenuOption<>(house.toString(), house);
@@ -69,8 +69,8 @@ public class ContractMenu {
         return FormUtil.readSelection("Bitte Haus auswählen:", options);
     }
 
-    private static Apartment selectApartment() {
-        Set<Apartment> apartments = Apartment.getAll();
+    private Apartment selectApartment() {
+        Set<Apartment> apartments = Apartment.getManagedBy(makler);
         List<MenuOption<Apartment>> list = new ArrayList<>();
         for (Apartment apartment : apartments) {
             MenuOption<Apartment> apartmentMenuOption = new MenuOption<>(apartment.toString(), apartment);
@@ -95,31 +95,28 @@ public class ContractMenu {
         ContractType type = selectContractType();
 
         if (type == ContractType.PURCHASECONTRACT) {
-            PurchaseContract.getAll();
-        }else if (type == ContractType.TENANCYCONTRACT) {
-            TenancyContract.getAll();
-        }else {
+            System.out.println(PurchaseContract.getAll());
+        } else if (type == ContractType.TENANCYCONTRACT) {
+            System.out.println(TenancyContract.getAll());
+        } else {
             System.out.println("Immobilientyp " + type + " existiert nicht! Kehre zum Immobilienmenü zurück...");
         }
     }
 
-    private static void createContract() {
+    private void createContract() {
         ContractType type = selectContractType();
-
 
         if (type == ContractType.PURCHASECONTRACT) {
 
             PurchaseContract purchaseContract = PurchaseContract.create(
                     FormUtil.readString("Place"),
-                    FormUtil.readInt("noInstallments"),
-                    FormUtil.readInt("interestRate"),
+                    FormUtil.readInt("Number of installments"),
+                    FormUtil.readInt("Interest rate"),
                     selectPerson(),
                     selectHouse()
             );
             System.out.println("Purchase contract mit ID " + purchaseContract.getId() + " wurde erstellt.");
         } else if (type == ContractType.TENANCYCONTRACT) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-
             TenancyContract tenancyContract = TenancyContract.create(
                     FormUtil.readString("Place"),
                     FormUtil.readDate("Start date"),
@@ -138,9 +135,9 @@ public class ContractMenu {
      */
     private static void newPerson() {
         Person p = Person.create(
-        FormUtil.readString("Vorname"),
-        FormUtil.readString("Nachname"),
-        FormUtil.readString("Adresse"));
+                FormUtil.readString("Vorname"),
+                FormUtil.readString("Nachname"),
+                FormUtil.readString("Adresse"));
 
         System.out.println("Person mit der ID " + p.getId() + " wurde erzeugt.");
     }

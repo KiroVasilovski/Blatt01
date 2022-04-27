@@ -1,14 +1,12 @@
 package de.dis.data.model.estate;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.PartitionedModelObjectFactory;
 import de.dis.data.model.Makler;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class Apartment extends Estate {
@@ -47,60 +45,33 @@ public class Apartment extends Estate {
     private static DbRowFactory<Column> dbRowFactory =
             new DbRowFactory<>("apartment", Column.values());
 
-    private static Map<Integer, Apartment> cache = new HashMap<>();
+    private static PartitionedModelObjectFactory<Column, Estate.Column, Apartment> factory =
+            new PartitionedModelObjectFactory(dbRowFactory, Estate.dbRowFactory, Apartment::new);
 
     public static Apartment get(int id) {
-        if (cache.containsKey(id)) return cache.get(id);
-
-        DbRow<Column> store = dbRowFactory.load(id);
-        DbRow<Estate.Column> estateStore = Estate.dbRowFactory.load(id);
-
-        if (estateStore == null || store == null) return null;
-
-        return new Apartment(store, estateStore);
+        return factory.get(id);
     }
 
     public static Set<Apartment> getManagedBy(Makler makler) {
-        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAllWhere(Estate.Column.ESTATE_AGENT, makler.getId());
-        Set<Apartment> result = new HashSet<>();
-        if (rows == null || rows.isEmpty()) return result;
-        for (DbRow<Estate.Column> row : rows) {
-            Apartment apartment = get((int) row.getId());
-            if (apartment != null) result.add(apartment);
-        }
-        return result;
+        return factory.getAllWhereParent(Estate.Column.ESTATE_AGENT, makler.getId());
     }
 
     public static Set<Apartment> getAll() {
-        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAll();
-        Set<Apartment> result = new HashSet<>();
-        if (rows == null || rows.isEmpty()) return result;
-        for (DbRow<Estate.Column> row : rows) {
-            Apartment apartment = get((int) row.getId());
-            if (apartment != null) result.add(apartment);
-        }
-        return result;
+        return factory.getAll();
     }
 
     public static Apartment create(String city, String postalCode, String street, String streetNumber, int squareArea, Makler estateAgent, int floor, int rent, int rooms, boolean balcony, boolean kitchen) {
-        DbRow<Estate.Column> estateStore =
-                Estate.dbRowFactory.create(city, postalCode, street, streetNumber, squareArea, estateAgent.getId());
-        if (estateStore == null) return null;
-        Object id = estateStore.getId();
-        DbRow<Column> store = dbRowFactory.createWithId(id, floor, rent, rooms, balcony, kitchen);
-        if (store == null) return null;
-
-        return new Apartment(store, estateStore);
+        return factory.create(new Object[]{city, postalCode, street, streetNumber, squareArea, estateAgent.getId()},
+                new Object[]{floor, rent, rooms, balcony, kitchen});
     }
 
-    public static void delete(Apartment apartment){
-        Estate.dbRowFactory.delete(apartment.getId());
-        cache.remove(apartment.getId());
+    public static void delete(Apartment apartment) {
+        factory.delete(apartment);
     }
 
     private final DbRow<Column> store;
 
-    private Apartment(DbRow<Column> store, DbRow<Estate.Column> estateStore) {
+    private Apartment(DbRow<Estate.Column> estateStore, DbRow<Column> store) {
         super(estateStore);
 
         this.store = store;
@@ -144,5 +115,10 @@ public class Apartment extends Estate {
 
     public void setKitchen(boolean hasKitchen) {
         store.set(Column.KITCHEN, hasKitchen);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " (Apt)";
     }
 }

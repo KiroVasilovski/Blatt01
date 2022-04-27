@@ -1,4 +1,4 @@
-package de.dis.data.model;
+package de.dis.data.factory;
 
 import de.dis.data.DbColumn;
 import de.dis.data.store.DbRow;
@@ -9,10 +9,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-interface PartitionedModelObjectFactoryFunction<ChildColumnType extends Enum<ChildColumnType> & DbColumn, ParentColumnType extends Enum<ParentColumnType> & DbColumn, ChildInstanceType extends ModelObject> {
-    ChildInstanceType instantiate(DbRow<ParentColumnType> parentStore, DbRow<ChildColumnType> store);
-}
 
 public class PartitionedModelObjectFactory<ChildColumnType extends Enum<ChildColumnType> & DbColumn, ParentColumnType extends Enum<ParentColumnType> & DbColumn, ChildInstanceType extends ModelObject> {
     private final DbRowFactory<ChildColumnType> dbRowFactory;

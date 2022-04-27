@@ -42,38 +42,44 @@ public class Main {
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 
         //Verarbeite Eingabe
-        while (true) {
+        boolean remain = true;
+        do {
             int response = mainMenu.show();
 
             switch (response) {
-                case MENU_MAKLER:
+                case MENU_MAKLER -> {
                     System.out.println("Bitte Master-Passwort zur Makler-Verwaltung eingeben:");
                     try {
-                        for (int i = 3; i > 0; i--){
+                        for (int i = 3; i > 0; i--) {
                             String input = stdin.readLine();
                             if (input.equals("passwort")) {
                                 MaklerMenu.showMaklerMenu();
                                 break;
                             } else {
-                                System.out.println("Falsches Passwort! Sie haben noch " + (i -1) + " Versuche");
+                                System.out.println("Falsches Passwort! Sie haben noch " + (i - 1) + " Versuche");
                             }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    break;
-                case MENU_ESTATE:
+                }
+                case MENU_ESTATE -> {
                     Makler m = maklerLogin();
                     if (m == null) return;
 
                     EstateMenu estateMenu = new EstateMenu(m);
                     estateMenu.showEstateMenu();
-                case MENU_CONTRACT:
-                    ContractMenu.showContractMenu();
-                case QUIT:
-                    return;
+                }
+                case MENU_CONTRACT -> {
+                    Makler m = maklerLogin();
+                    if (m == null) return;
+
+                    ContractMenu contractMenu = new ContractMenu(m);
+                    contractMenu.showContractMenu();
+                }
+                case QUIT -> remain = false;
             }
-        }
+        } while (remain);
     }
 
     private static Makler maklerLogin() {

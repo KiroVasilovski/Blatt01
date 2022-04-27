@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="- removed estate menu logic from Main">
-      <change afterPath="$PROJECT_DIR$/src/de/dis/data/model/ModelObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/de/dis/data/model/PartitionedModelObjectFactory.java" afterDir="false" />
+    <list default="true" id="930bb54a-79a6-4182-b42e-809793b46fe0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/de/dis/data/factory/ModelObjectFactoryFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/de/dis/data/factory/PartitionedModelObjectFactoryFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/ModelObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/ModelObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/Makler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Contract$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Contract$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Contract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Contract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/PurchaseContract$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/PurchaseContract$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/PurchaseContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/PurchaseContract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/TenancyContract$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/TenancyContract$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/TenancyContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/contract/TenancyContract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Apartment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Estate$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Estate$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Estate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/Estate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House$Column.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House$Column.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Blatt01/de/dis/data/model/estate/House.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/console/FormUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/console/FormUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/Makler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/Makler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/ModelObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/factory/ModelObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/ModelObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/factory/ModelObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/PartitionedModelObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/factory/PartitionedModelObjectFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/Contract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/PurchaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/PurchaseContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/contract/TenancyContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/contract/TenancyContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Apartment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/Estate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/Estate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/data/model/estate/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/ContractMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/EstateMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/dis/menu/MaklerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/dis/menu/MaklerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +50,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Record" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -78,7 +109,7 @@
       <module name="Blatt01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.dis.data.model.*" />
+          <option name="PATTERN" value="de.dis.data.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,7 +125,7 @@
       <module name="Blatt01" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.dis.data.model.*" />
+          <option name="PATTERN" value="de.dis.data.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -210,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651011624540</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="- added ModelObjectFactory and PartitionedModelObjectFactory">
+      <created>1651014185591</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651014185591</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,14 +262,15 @@
     <MESSAGE value="- removed estate menu logic from Main" />
     <MESSAGE value="- fixed estates being listed under wrong estate type" />
     <MESSAGE value="- fixed NPE in House.getAll and Apartment.getManagedBy" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fixed NPE in House.getAll and Apartment.getManagedBy" />
+    <MESSAGE value="- added ModelObjectFactory and PartitionedModelObjectFactory" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added ModelObjectFactory and PartitionedModelObjectFactory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dis/data/model/estate/Estate.java</url>
-          <line>89</line>
+          <line>90</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

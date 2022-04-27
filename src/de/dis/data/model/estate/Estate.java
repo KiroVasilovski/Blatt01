@@ -1,13 +1,14 @@
 package de.dis.data.model.estate;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.ModelObject;
 import de.dis.data.model.Makler;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
 
-abstract class Estate {
+abstract class Estate implements ModelObject {
     enum Column implements DbColumn {
         ID(Types.INTEGER, "estate_id"),
         CITY(Types.VARCHAR, "city"),
@@ -100,5 +101,11 @@ abstract class Estate {
 
     public void setEstateAgent(Makler estateAgent) {
         store.set(Column.ESTATE_AGENT, estateAgent.getId());
+    }
+
+    @Override
+    public String toString() {
+        return String.format("E%03d [%s %s, %s %s]",
+                getId(), getStreet(), getStreetNumber(), getPostalCode(), getCity());
     }
 }

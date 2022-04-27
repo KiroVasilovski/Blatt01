@@ -1,15 +1,16 @@
 package de.dis.data.model;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.ModelObject;
+import de.dis.data.factory.ModelObjectFactory;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
-public class Makler {
+public class Makler implements ModelObject {
     enum Column implements DbColumn {
         ID(Types.INTEGER, "estate_agent_id"),
         NAME(Types.VARCHAR, "name"),
@@ -44,41 +45,32 @@ public class Makler {
     private static DbRowFactory<Column> dbRowFactory =
             new DbRowFactory<>("estate_agent", Column.values());
 
-    private static Map<Object, Makler> cache = new HashMap<>();
+    private static ModelObjectFactory<Column, Makler> factory = new ModelObjectFactory(dbRowFactory, Makler::new);
 
     public static Makler get(int id) {
-        if (cache.containsKey(id)) return cache.get(id);
+        return factory.get(id);
+    }
 
-        DbRow<Column> store =
-                dbRowFactory.load(id);
-        if (store == null) return null;
-        return new Makler(store);
+    public static Set<Makler> getAll() {
+        return factory.getAll();
     }
 
     public static Makler getByLogin(String login) {
-        DbRow<Column> store = dbRowFactory.loadWhere(Column.LOGIN, login);
-        if (store == null) return null;
-        return new Makler(store);
+        return factory.getWhere(Column.LOGIN, login);
     }
 
     public static Makler create(String name, String address, String login, String password) {
-        DbRow<Column> store =
-                dbRowFactory.create(name, address, login, password);
-        if (store == null) return null;
-        return new Makler(store);
+        return factory.create(name, address, login, password);
     }
 
     public static void delete(Makler makler){
-        Makler.dbRowFactory.delete(makler.getId());
-        cache.remove(makler.getId());
+        factory.delete(makler);
     }
 
     private final DbRow<Column> store;
 
     private Makler(DbRow<Column> store) {
         this.store = store;
-
-        cache.put(store.getId(), this);
     }
 
     public int getId() {
@@ -116,5 +108,10 @@ public class Makler {
 
     public void setPassword(String password) {
         store.set(Column.PASSWORD, password);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Agent @%s (%s)", getLogin(), getName());
     }
 }

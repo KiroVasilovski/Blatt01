@@ -1,4 +1,4 @@
-package de.dis.data.model;
+package de.dis.data.factory;
 
 import de.dis.data.DbColumn;
 import de.dis.data.store.DbRow;
@@ -8,10 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-interface ModelObjectFactoryFunction<ColumnType extends Enum<ColumnType> & DbColumn, InstanceType> {
-    InstanceType instantiate(DbRow<ColumnType> store);
-}
 
 public class ModelObjectFactory<ColumnType extends Enum<ColumnType> & DbColumn, InstanceType extends ModelObject> {
     private final ModelObjectFactoryFunction<ColumnType, InstanceType> factoryFunction;
@@ -54,6 +50,14 @@ public class ModelObjectFactory<ColumnType extends Enum<ColumnType> & DbColumn, 
     public Set<InstanceType> getAllWhere(ColumnType column, Object value) {
         Set<DbRow<ColumnType>> rows = dbRowFactory.loadAllWhere(column, value);
         return bulkInstantiate(rows);
+    }
+
+    public InstanceType getWhere(ColumnType column, Object value) {
+        DbRow<ColumnType> row = dbRowFactory.loadWhere(column, value);
+        if (row == null) return null;
+        Object id = row.getId();
+        if (cache.containsKey(id)) return cache.get(id);
+        return factoryFunction.instantiate(row);
     }
 
     private Set<InstanceType> bulkInstantiate(Set<DbRow<ColumnType>> rows) {

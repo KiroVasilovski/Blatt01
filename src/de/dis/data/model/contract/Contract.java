@@ -1,13 +1,14 @@
 package de.dis.data.model.contract;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.ModelObject;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
 import java.time.LocalDate;
 
-abstract class Contract {
+abstract class Contract implements ModelObject {
     enum Column implements DbColumn {
         ID(Types.INTEGER, "id"),
         DATE(Types.DATE, "date"),
@@ -56,5 +57,10 @@ abstract class Contract {
 
     public String getPlace() {
         return (String) store.get(Column.PLACE);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("C%03d [%s, %s]", getId(), getPlace(), getDate());
     }
 }

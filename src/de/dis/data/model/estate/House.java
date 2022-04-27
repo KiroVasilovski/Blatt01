@@ -1,14 +1,12 @@
 package de.dis.data.model.estate;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.PartitionedModelObjectFactory;
 import de.dis.data.model.Makler;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class House extends Estate {
@@ -45,60 +43,35 @@ public class House extends Estate {
     private static DbRowFactory<Column> dbRowFactory =
             new DbRowFactory<>("house", Column.values());
 
-    private static Map<Integer, House> cache = new HashMap<>();
+    private static PartitionedModelObjectFactory<Apartment.Column, Estate.Column, House> factory =
+            new PartitionedModelObjectFactory(dbRowFactory, Estate.dbRowFactory, House::new);
 
     public static House get(int id) {
-        if (cache.containsKey(id)) return cache.get(id);
-
-        DbRow<Column> store = dbRowFactory.load(id);
-        DbRow<Estate.Column> estateStore = Estate.dbRowFactory.load(id);
-
-        if (estateStore == null || store == null) return null;
-
-        return new House(store, estateStore);
+        return factory.get(id);
     }
 
     public static Set<House> getManagedBy(Makler makler) {
-        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAllWhere(Estate.Column.ESTATE_AGENT, makler.getId());
-        Set<House> result = new HashSet<>();
-        if (rows == null || rows.isEmpty()) return result;
-        for (DbRow<Estate.Column> row : rows) {
-            House house = get((int) row.getId());
-            if (house != null) result.add(house);
-        }
-        return result;
+        return factory.getAllWhereParent(Estate.Column.ESTATE_AGENT, makler.getId());
     }
 
     public static Set<House> getAll() {
-        Set<DbRow<Estate.Column>> rows = Estate.dbRowFactory.loadAll();
-        Set<House> result = new HashSet<>();
-        if (rows == null || rows.isEmpty()) return result;
-        for (DbRow<Estate.Column> row : rows) {
-            House house = get((int) row.getId());
-            if (house != null) result.add(house);
-        }
-        return result;
+        return factory.getAll();
     }
 
     public static House create(String city, String postalCode, String street, String streetNumber, int squareArea, Makler estateAgent, int floors, int price, boolean garden) {
-        DbRow<Estate.Column> estateStore =
-                Estate.dbRowFactory.create(city, postalCode, street, streetNumber, squareArea, estateAgent.getId());
-        if (estateStore == null) return null;
-        Object id = estateStore.getId();
-        DbRow<Column> store = dbRowFactory.createWithId(id, floors, price, garden);
-        if (store == null) return null;
-
-        return new House(store, estateStore);
+        return factory.create(
+                new Object[]{city, postalCode, street, streetNumber, squareArea, estateAgent.getId()},
+                new Object[]{floors, price, garden}
+        );
     }
 
-    public static void delete(House house){
-        Estate.dbRowFactory.delete(house.getId());
-        cache.remove(house.getId());
+    public static void delete(House house) {
+        factory.delete(house);
     }
 
     private final DbRow<Column> store;
 
-    private House(DbRow<Column> store, DbRow<Estate.Column> estateStore) {
+    private House(DbRow<Estate.Column> estateStore, DbRow<Column> store) {
         super(estateStore);
 
         this.store = store;
@@ -126,5 +99,10 @@ public class House extends Estate {
 
     public void setGarden(boolean hasGarden) {
         store.set(Column.GARDEN, hasGarden);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " (House)";
     }
 }

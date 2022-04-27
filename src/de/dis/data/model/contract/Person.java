@@ -1,16 +1,15 @@
 package de.dis.data.model.contract;
 
 import de.dis.data.DbColumn;
+import de.dis.data.factory.ModelObject;
+import de.dis.data.factory.ModelObjectFactory;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
 import java.sql.Types;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-public class Person {
+public class Person implements ModelObject {
     enum Column implements DbColumn {
         ID(Types.INTEGER, "id"),
         NAME(Types.VARCHAR, "name"),
@@ -44,42 +43,25 @@ public class Person {
     private static DbRowFactory<Column> dbRowFactory =
             new DbRowFactory<>("person", Column.values());
 
-    private static Map<Object, Person> cache = new HashMap<>();
+    private static ModelObjectFactory<Column, Person> factory = new ModelObjectFactory<Column, Person>(dbRowFactory, Person::new);
 
     public static Person get(int id) {
-        if (cache.containsKey(id)) return cache.get(id);
-
-        DbRow<Column> store =
-                dbRowFactory.load(id);
-        if (store == null) return null;
-        return new Person(store);
+        return factory.get(id);
     }
 
     // TODO all these getAll and create methods are rather redundant
     public static Set<Person> getAll() {
-        Set<DbRow<Column>> rows = dbRowFactory.loadAll();
-        Set<Person> result = new HashSet<>();
-        if (rows == null || rows.isEmpty()) return result;
-        for (DbRow<Column> row : rows) {
-            Person contract = get((int) row.getId());
-            if (contract != null) result.add(contract);
-        }
-        return result;
+        return factory.getAll();
     }
 
     public static Person create(String firstName, String name, String address) {
-        DbRow<Column> store =
-                dbRowFactory.create(firstName, name, address);
-        if (store == null) return null;
-        return new Person(store);
+        return factory.create(firstName, name, address);
     }
 
     private final DbRow<Column> store;
 
     private Person(DbRow<Column> store) {
         this.store = store;
-
-        cache.put(store.getId(), this);
     }
 
     public int getId() {
@@ -112,5 +94,10 @@ public class Person {
 
     public void setAddress(String address) {
         store.set(Column.ADDRESS, address);
+    }
+
+    @Override
+    public String toString() {
+        return getFullName();
     }
 }
