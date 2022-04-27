@@ -10,7 +10,7 @@ import java.sql.Types;
 import java.util.Objects;
 import java.util.Set;
 
-public class Makler implements ModelObject {
+public class EstateAgent implements ModelObject {
     enum Column implements DbColumn {
         ID(Types.INTEGER, "estate_agent_id"),
         NAME(Types.VARCHAR, "name"),
@@ -45,31 +45,31 @@ public class Makler implements ModelObject {
     private static DbRowFactory<Column> dbRowFactory =
             new DbRowFactory<>("estate_agent", Column.values());
 
-    private static ModelObjectFactory<Column, Makler> factory = new ModelObjectFactory(dbRowFactory, Makler::new);
+    private static ModelObjectFactory<Column, EstateAgent> factory = new ModelObjectFactory(dbRowFactory, EstateAgent::new);
 
-    public static Makler get(int id) {
+    public static EstateAgent get(int id) {
         return factory.get(id);
     }
 
-    public static Set<Makler> getAll() {
+    public static Set<EstateAgent> getAll() {
         return factory.getAll();
     }
 
-    public static Makler getByLogin(String login) {
+    public static EstateAgent getByLogin(String login) {
         return factory.getWhere(Column.LOGIN, login);
     }
 
-    public static Makler create(String name, String address, String login, String password) {
+    public static EstateAgent create(String name, String address, String login, String password) {
         return factory.create(name, address, login, password);
     }
 
-    public static void delete(Makler makler){
-        factory.delete(makler);
+    public static void delete(EstateAgent estateAgent){
+        factory.delete(estateAgent);
     }
 
     private final DbRow<Column> store;
 
-    private Makler(DbRow<Column> store) {
+    private EstateAgent(DbRow<Column> store) {
         this.store = store;
     }
 

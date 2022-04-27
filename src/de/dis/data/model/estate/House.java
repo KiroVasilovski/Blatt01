@@ -2,7 +2,7 @@ package de.dis.data.model.estate;
 
 import de.dis.data.DbColumn;
 import de.dis.data.factory.PartitionedModelObjectFactory;
-import de.dis.data.model.Makler;
+import de.dis.data.model.EstateAgent;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
@@ -50,15 +50,15 @@ public class House extends Estate {
         return factory.get(id);
     }
 
-    public static Set<House> getManagedBy(Makler makler) {
-        return factory.getAllWhereParent(Estate.Column.ESTATE_AGENT, makler.getId());
+    public static Set<House> getManagedBy(EstateAgent estateAgent) {
+        return factory.getAllWhereParent(Estate.Column.ESTATE_AGENT, estateAgent.getId());
     }
 
     public static Set<House> getAll() {
         return factory.getAll();
     }
 
-    public static House create(String city, String postalCode, String street, String streetNumber, int squareArea, Makler estateAgent, int floors, int price, boolean garden) {
+    public static House create(String city, String postalCode, String street, String streetNumber, int squareArea, EstateAgent estateAgent, int floors, int price, boolean garden) {
         return factory.create(
                 new Object[]{city, postalCode, street, streetNumber, squareArea, estateAgent.getId()},
                 new Object[]{floors, price, garden}

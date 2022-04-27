@@ -3,7 +3,7 @@ package de.dis.menu;
 import de.dis.console.FormUtil;
 import de.dis.console.Menu;
 import de.dis.console.MenuOption;
-import de.dis.data.model.Makler;
+import de.dis.data.model.EstateAgent;
 import de.dis.data.model.estate.Apartment;
 import de.dis.data.model.estate.House;
 
@@ -14,10 +14,10 @@ import java.util.Set;
 public class EstateMenu {
     enum EstateType {APARTMENT, HOUSE}
 
-    private final Makler makler;
+    private final EstateAgent estateAgent;
 
-    public EstateMenu(Makler makler) {
-        this.makler = makler;
+    public EstateMenu(EstateAgent estateAgent) {
+        this.estateAgent = estateAgent;
     }
 
     /**
@@ -61,7 +61,7 @@ public class EstateMenu {
      * @return Apartment.
      */
     private Apartment selectApartment() {
-        Set<Apartment> apartments = Apartment.getManagedBy(makler);
+        Set<Apartment> apartments = Apartment.getManagedBy(estateAgent);
         List<MenuOption<Apartment>> list = new ArrayList<>();
         for (Apartment apartment : apartments) {
             MenuOption<Apartment> apartmentMenuOption = new MenuOption<>(apartment.toString(), apartment);
@@ -77,7 +77,7 @@ public class EstateMenu {
      * @return House.
      */
     private House selectHouse() {
-        Set<House> houses = House.getManagedBy(makler);
+        Set<House> houses = House.getManagedBy(estateAgent);
         List<MenuOption<House>> list = new ArrayList<>();
         for (House house : houses) {
             MenuOption<House> houseMenuOption = new MenuOption<>(house.toString(), house);
@@ -211,7 +211,7 @@ public class EstateMenu {
                     FormUtil.readString("Street"),
                     FormUtil.readString("Street number"),
                     FormUtil.readInt("Square area"),
-                    makler,
+                    estateAgent,
                     FormUtil.readInt("Floors"),
                     FormUtil.readInt("Price"),
                     FormUtil.readBoolean("Garden?")
@@ -224,7 +224,7 @@ public class EstateMenu {
                     FormUtil.readString("Street"),
                     FormUtil.readString("Street number"),
                     FormUtil.readInt("Square area"),
-                    makler,
+                    estateAgent,
                     FormUtil.readInt("Floor"),
                     FormUtil.readInt("Rent"),
                     FormUtil.readInt("Rooms"),

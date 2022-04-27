@@ -2,7 +2,7 @@ package de.dis.data.model.estate;
 
 import de.dis.data.DbColumn;
 import de.dis.data.factory.ModelObject;
-import de.dis.data.model.Makler;
+import de.dis.data.model.EstateAgent;
 import de.dis.data.store.DbRow;
 import de.dis.data.store.DbRowFactory;
 
@@ -75,8 +75,8 @@ abstract class Estate implements ModelObject {
         return (int) store.get(Column.SQUARE_AREA);
     }
 
-    public Makler getEstateAgent() {
-        return Makler.get((int) store.get(Column.ESTATE_AGENT));
+    public EstateAgent getEstateAgent() {
+        return EstateAgent.get((int) store.get(Column.ESTATE_AGENT));
     }
 
     public void setCity(String city) {
@@ -99,7 +99,7 @@ abstract class Estate implements ModelObject {
         store.set(Column.SQUARE_AREA, squareArea);
     }
 
-    public void setEstateAgent(Makler estateAgent) {
+    public void setEstateAgent(EstateAgent estateAgent) {
         store.set(Column.ESTATE_AGENT, estateAgent.getId());
     }
 

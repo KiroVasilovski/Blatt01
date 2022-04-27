@@ -3,7 +3,7 @@ package de.dis.menu;
 import de.dis.console.FormUtil;
 import de.dis.console.Menu;
 import de.dis.console.MenuOption;
-import de.dis.data.model.Makler;
+import de.dis.data.model.EstateAgent;
 import de.dis.data.model.contract.Person;
 import de.dis.data.model.contract.PurchaseContract;
 import de.dis.data.model.contract.TenancyContract;
@@ -18,10 +18,10 @@ public class ContractMenu {
 
     enum ContractType {PURCHASECONTRACT, TENANCYCONTRACT}
 
-    private final Makler makler;
+    private final EstateAgent estateAgent;
 
-    public ContractMenu(Makler makler) {
-        this.makler = makler;
+    public ContractMenu(EstateAgent estateAgent) {
+        this.estateAgent = estateAgent;
     }
 
     public void showContractMenu() {
@@ -59,7 +59,7 @@ public class ContractMenu {
     }
 
     private House selectHouse() {
-        Set<House> houses = House.getManagedBy(makler);
+        Set<House> houses = House.getManagedBy(estateAgent);
         List<MenuOption<House>> list = new ArrayList<>();
         for (House house : houses) {
             MenuOption<House> houseMenuOption = new MenuOption<>(house.toString(), house);
@@ -70,7 +70,7 @@ public class ContractMenu {
     }
 
     private Apartment selectApartment() {
-        Set<Apartment> apartments = Apartment.getManagedBy(makler);
+        Set<Apartment> apartments = Apartment.getManagedBy(estateAgent);
         List<MenuOption<Apartment>> list = new ArrayList<>();
         for (Apartment apartment : apartments) {
             MenuOption<Apartment> apartmentMenuOption = new MenuOption<>(apartment.toString(), apartment);
