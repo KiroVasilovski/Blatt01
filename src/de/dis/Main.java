@@ -37,7 +37,7 @@ public class Main {
         mainMenu.addEntry("Broker management", MENU_MAKLER);
         mainMenu.addEntry("Estate management", MENU_ESTATE);
         mainMenu.addEntry("Contract management", MENU_CONTRACT);
-        mainMenu.addEntry("End", QUIT);
+        mainMenu.addEntry("Quit", QUIT);
 
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 
