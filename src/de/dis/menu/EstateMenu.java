@@ -68,7 +68,7 @@ public class EstateMenu {
             list.add(apartmentMenuOption);
         }
         MenuOption<Apartment>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Please select apartment:", options);
+        return FormUtil.readSelection("Please select apartment", options);
     }
 
     /**
@@ -84,7 +84,7 @@ public class EstateMenu {
             list.add(houseMenuOption);
         }
         MenuOption<House>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Please select house:", options);
+        return FormUtil.readSelection("Please select house", options);
     }
 
     /**

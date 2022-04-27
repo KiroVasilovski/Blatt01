@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Main class
+ * Hauptklasse
  */
 public class Main {
     /**
@@ -48,7 +48,7 @@ public class Main {
 
             switch (response) {
                 case MENU_MAKLER -> {
-                    System.out.println("Please enter the master password for broker administration:");
+                    System.out.println("Please enter the master password for broker administration");
                     try {
                         for (int i = 3; i > 0; i--) {
                             String input = stdin.readLine();

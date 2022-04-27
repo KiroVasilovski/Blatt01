@@ -75,10 +75,10 @@ public class MaklerMenu {
                     new MenuOption<>("Back", BACK));
 
             switch (selection) {
-                case NAME -> m.setName(FormUtil.readString("New name:"));
-                case ADDRESS -> m.setAddress(FormUtil.readString("New address:"));
-                case LOGIN -> m.setLogin(FormUtil.readString("Login: "));
-                case PASSWORD -> m.setPassword(FormUtil.readString("New password: "));
+                case NAME -> m.setName(FormUtil.readString("New name"));
+                case ADDRESS -> m.setAddress(FormUtil.readString("New address"));
+                case LOGIN -> m.setLogin(FormUtil.readString("Login"));
+                case PASSWORD -> m.setPassword(FormUtil.readString("New password"));
                 case DELETE -> {
                     if (FormUtil.readBoolean("Please confirm that the broker is to be permanently deleted")) {
                         Makler.delete(m);
