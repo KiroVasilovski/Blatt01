@@ -16,18 +16,18 @@ public class MaklerMenu {
      * Shows the broker management
      */
     public static void showMaklerMenu() {
-        //Menüoptionen
+        //Menu options
         final int NEW_MAKLER = 0;
         final int EDIT_MAKLER = 1;
         final int BACK = 2;
 
-        //Maklerverwaltungsmenü
+        //Broker management menu
         Menu<Integer> maklerMenu = new Menu("Broker management");
         maklerMenu.addEntry("New broker", NEW_MAKLER);
         maklerMenu.addEntry("Edit broker", EDIT_MAKLER);
         maklerMenu.addEntry("Back to main menu", BACK);
 
-        //Verarbeite Eingabe
+        //Processed input
         boolean remain = true;
         do {
             int response = maklerMenu.show();
@@ -48,11 +48,10 @@ public class MaklerMenu {
             list.add(agentOption);
         }
         MenuOption<Makler>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Please select broker:", options);
+        return FormUtil.readSelection("Please select broker", options);
     }
 
     private static void showEditMakler() {
-        System.out.println("Please enter the broker ID of the broker to be changed:");
         Makler m = selectMakler();
         if (m == null) return;
 

@@ -85,11 +85,11 @@ public class Main {
     private static Makler maklerLogin() {
         Makler m = null;
         while (m == null) {
-            String login = FormUtil.readString("Enter user name:");
+            String login = FormUtil.readString("Enter user name");
             m = Makler.getByLogin(login);
         }
         for (int i = 0; i < 3; i++) {
-            String password = FormUtil.readString("Enter password:");
+            String password = FormUtil.readString("Enter password");
             if (m.comparePassword(password)) return m;
         }
         return null;

@@ -35,15 +35,18 @@ public class EstateMenu {
         estateMenu.addEntry("Edit estate", UPDATE_ESTATE);
         estateMenu.addEntry("Back to the main menu", BACK);
 
-        //Verarbeite Eingabe
-        while (true) {
+        //Processed input
+        boolean remain = true;
+
+        do {
             int response = estateMenu.show();
 
             switch (response) {
                 case NEW_ESTATE -> newEstate();
                 case UPDATE_ESTATE -> showUpdateEstateMenu();
+                case BACK -> remain = false;
             }
-        }
+        } while (remain);
     }
 
     private static EstateType selectEstateType() {
