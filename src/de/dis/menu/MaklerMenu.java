@@ -13,7 +13,7 @@ public class MaklerMenu {
 
 
     /**
-     * Zeigt die Maklerverwaltung
+     * Shows the broker management
      */
     public static void showMaklerMenu() {
         //Menüoptionen
@@ -22,10 +22,10 @@ public class MaklerMenu {
         final int BACK = 2;
 
         //Maklerverwaltungsmenü
-        Menu<Integer> maklerMenu = new Menu("Makler-Verwaltung");
-        maklerMenu.addEntry("Neuer Makler", NEW_MAKLER);
-        maklerMenu.addEntry("Makler bearbeiten", EDIT_MAKLER);
-        maklerMenu.addEntry("Zurück zum Hauptmenü", BACK);
+        Menu<Integer> maklerMenu = new Menu("Broker management");
+        maklerMenu.addEntry("New broker", NEW_MAKLER);
+        maklerMenu.addEntry("Edit broker", EDIT_MAKLER);
+        maklerMenu.addEntry("Back to main menu", BACK);
 
         //Verarbeite Eingabe
         boolean remain = true;
@@ -48,11 +48,11 @@ public class MaklerMenu {
             list.add(agentOption);
         }
         MenuOption<Makler>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Bitte Makler auswählen:", options);
+        return FormUtil.readSelection("Please select broker:", options);
     }
 
     private static void showEditMakler() {
-        System.out.println("Bitte Makler-ID des zu ändernden Maklers eingeben:");
+        System.out.println("Please enter the broker ID of the broker to be changed:");
         Makler m = selectMakler();
         if (m == null) return;
 
@@ -67,21 +67,21 @@ public class MaklerMenu {
 
         boolean remain = true;
         do {
-            int selection = FormUtil.readSelection("Bitte das zu bearbeitende Attribut auswählen",
+            int selection = FormUtil.readSelection("Please select the attribute to be edited",
                     new MenuOption<>(String.format("Name (%s)", m.getName()), NAME),
-                    new MenuOption<>(String.format("Addresse (%s)", m.getAddress()), ADDRESS),
+                    new MenuOption<>(String.format("Address (%s)", m.getAddress()), ADDRESS),
                     new MenuOption<>(String.format("Login (%s)", m.getLogin()), LOGIN),
                     new MenuOption<>(String.format("Password (%s)", "****"), PASSWORD),
-                    new MenuOption<>("Makler löschen", DELETE),
-                    new MenuOption<>("Zurück", BACK));
+                    new MenuOption<>("Delete broker", DELETE),
+                    new MenuOption<>("Back", BACK));
 
             switch (selection) {
-                case NAME -> m.setName(FormUtil.readString("Neuer Name:"));
-                case ADDRESS -> m.setAddress(FormUtil.readString("Neue Addresse:"));
+                case NAME -> m.setName(FormUtil.readString("New name:"));
+                case ADDRESS -> m.setAddress(FormUtil.readString("New address:"));
                 case LOGIN -> m.setLogin(FormUtil.readString("Login: "));
-                case PASSWORD -> m.setPassword(FormUtil.readString("Neues Passwort: "));
+                case PASSWORD -> m.setPassword(FormUtil.readString("New password: "));
                 case DELETE -> {
-                    if (FormUtil.readBoolean("Bitte bestätigen, dass der Makler endgültig gelöscht werden soll")) {
+                    if (FormUtil.readBoolean("Please confirm that the broker is to be permanently deleted")) {
                         Makler.delete(m);
                         remain = false;
                     }
@@ -92,17 +92,17 @@ public class MaklerMenu {
     }
 
     /**
-     * Legt einen neuen Makler an, nachdem der Benutzer
-     * die entprechenden Daten eingegeben hat.
+     * Creates a new broker after the user has
+     * entered the corresponding data.
      */
     public static void newMakler() {
         Makler m = Makler.create(
                 FormUtil.readString("Name"),
-                FormUtil.readString("Addressse"),
+                FormUtil.readString("Address"),
                 FormUtil.readString("Login"),
-                FormUtil.readString("Passwort")
+                FormUtil.readString("Password")
         );
 
-        System.out.println("Makler mit der ID " + m.getId() + " wurde erzeugt.");
+        System.out.println("Broker with the ID " + m.getId() + " was created.");
     }
 }

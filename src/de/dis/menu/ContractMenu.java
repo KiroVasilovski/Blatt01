@@ -32,11 +32,11 @@ public class ContractMenu {
         final int BACK = 3;
 
         //Verwaltungsmenü Verträge
-        Menu<Integer> contractMenu = new Menu("Vertragsverwaltung");
-        contractMenu.addEntry("Neue Person anlegen", NEW_PERSON);
-        contractMenu.addEntry("Vertrag erstellen", SIGN_CONTRACT);
-        contractMenu.addEntry("Verträge anzeigen", SHOW_CONTRACTS);
-        contractMenu.addEntry("Zurück zum Hauptmenü", BACK);
+        Menu<Integer> contractMenu = new Menu("Contract management");
+        contractMenu.addEntry("Create new person", NEW_PERSON);
+        contractMenu.addEntry("Create contract", SIGN_CONTRACT);
+        contractMenu.addEntry("Show contracts", SHOW_CONTRACTS);
+        contractMenu.addEntry("Back to the main menu", BACK);
 
         //Verarbeite Eingabe
         boolean remain = true;
@@ -53,7 +53,7 @@ public class ContractMenu {
     }
 
     private static ContractMenu.ContractType selectContractType() {
-        return FormUtil.readSelection("Bitte Art des Vertrages auswählen:",
+        return FormUtil.readSelection("Please select the type of contract:",
                 new MenuOption<>("Purchase Contract", ContractMenu.ContractType.PURCHASECONTRACT),
                 new MenuOption<>("Tenancy Contract", ContractMenu.ContractType.TENANCYCONTRACT));
     }
@@ -66,7 +66,7 @@ public class ContractMenu {
             list.add(houseMenuOption);
         }
         MenuOption<House>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Bitte Haus auswählen:", options);
+        return FormUtil.readSelection("Please select house:", options);
     }
 
     private Apartment selectApartment() {
@@ -77,7 +77,7 @@ public class ContractMenu {
             list.add(apartmentMenuOption);
         }
         MenuOption<Apartment>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Bitte Apartment auswählen:", options);
+        return FormUtil.readSelection("Please select apartment:", options);
     }
 
     private static Person selectPerson() {
@@ -88,7 +88,7 @@ public class ContractMenu {
             list.add(personMenuOption);
         }
         MenuOption<Person>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Bitte Person auswählen:", options);
+        return FormUtil.readSelection("Please select person:", options);
     }
 
     private static void showContracts() {
@@ -99,7 +99,7 @@ public class ContractMenu {
         } else if (type == ContractType.TENANCYCONTRACT) {
             System.out.println(TenancyContract.getAll());
         } else {
-            System.out.println("Immobilientyp " + type + " existiert nicht! Kehre zum Immobilienmenü zurück...");
+            System.out.println("Contract type " + type + " does not exist! Return to the contract menu...");
         }
     }
 
@@ -115,7 +115,7 @@ public class ContractMenu {
                     selectPerson(),
                     selectHouse()
             );
-            System.out.println("Purchase contract mit ID " + purchaseContract.getId() + " wurde erstellt.");
+            System.out.println("Purchase contract with the ID " + purchaseContract.getId() + " was created.");
         } else if (type == ContractType.TENANCYCONTRACT) {
             TenancyContract tenancyContract = TenancyContract.create(
                     FormUtil.readString("Place"),
@@ -124,9 +124,9 @@ public class ContractMenu {
                     selectPerson(),
                     selectApartment()
             );
-            System.out.println("Tenancy contract mit ID " + tenancyContract.getId() + " wurde erstellt.");
+            System.out.println("Tenancy contract with the ID " + tenancyContract.getId() + " was created.");
         } else {
-            System.out.println("Vertragstyp " + type + " existiert nicht! Kehre zum Immobilienmenü zurück...");
+            System.out.println("Contract type " + type + " does not exist! Return to the contract menu...");
         }
     }
 
@@ -135,10 +135,10 @@ public class ContractMenu {
      */
     private static void newPerson() {
         Person p = Person.create(
-                FormUtil.readString("Vorname"),
-                FormUtil.readString("Nachname"),
-                FormUtil.readString("Adresse"));
+                FormUtil.readString("Name"),
+                FormUtil.readString("Surname"),
+                FormUtil.readString("Address"));
 
-        System.out.println("Person mit der ID " + p.getId() + " wurde erzeugt.");
+        System.out.println("The person with the ID " + p.getId() + " was created.");
     }
 }

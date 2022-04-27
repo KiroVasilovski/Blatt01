@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 /**
- * Einfaches Singleton zur Verwaltung von Datenbank-Verbindungen.
+ * Simple singleton for managing database connections.
  * 
  * @author Michael von Riegen
  * @version April 2009
@@ -21,7 +21,7 @@ public class DbConnectionManager {
 	private Connection _con;
 
 	/**
-	 * Erzeugt eine Datenbank-Verbindung
+	 * Creates a database connection
 	 */
 	private DbConnectionManager() {
 		try {
@@ -43,7 +43,7 @@ public class DbConnectionManager {
 	}
 
 	/**
-	 * Liefert Instanz des Managers
+	 * Provides instance of the manager
 	 * 
 	 * @return DBConnectionManager
 	 */
@@ -55,7 +55,7 @@ public class DbConnectionManager {
 	}
 
 	/**
-	 * Liefert eine Verbindung zur Datenbank zurC<ck
+	 * Returns a connection to the database
 	 * 
 	 * @return Connection
 	 */

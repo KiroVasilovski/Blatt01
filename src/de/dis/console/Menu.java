@@ -6,23 +6,23 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * Kleine Helferklasse für Menüs
- * Zuvor müssen mit addEntry Menüoptionen hinzugefügt werden. Mit
- * der Methode show() wird das Menü angezeigt und die mit der Option
- * angegebene Konstante zurückgeliefert.
+ * Small helper class for menus
+ * Before that, menu options must be added with addEntry.
+ * With the method show() the menu is displayed and the
+ * constant specified with the option is returned.
  * 
- * Beispiel:
- * Menu m = new Menu("Hauptmenü");
- * m.addEntry("Hart arbeiten", 0);
- * m.addEntry("Ausruhen", 1);
- * m.addEntry("Nach Hause gehen", 2);
- * int wahl = m.show();
+ * Example:
+ * Menu m = new Menu("Main menu");
+ * m.addEntry("Work hard", 0);
+ * m.addEntry("Rest", 1);
+ * m.addEntry("Go home", 2);
+ * int selection = m.show();
  * 
- * Angezeigt wird dann das Menü:
- * Hauptmenü:
- * [1] Hart arbeiten
- * [2] Ausruhen
- * [3] Nach Hause gehen
+ * The menu is then displayed:
+ * Main menu:
+ * [1] Work hard
+ * [2] Rest
+ * [3] Go home
  * --
  */
 public class Menu<T> {
@@ -31,8 +31,8 @@ public class Menu<T> {
 	private ArrayList<T> returnValues = new ArrayList<T>();
 	
 	/**
-	 * Konstruktor.
-	 * @param title Titel des Menüs z.B. "Hauptmenü"
+	 * Constructor.
+	 * @param title Title of the menu e.g. "Main menu"
 	 */
 	public Menu(String title) {
 		super();
@@ -40,9 +40,9 @@ public class Menu<T> {
 	}
 	
 	/**
-	 * Fügt einen Menüeintrag zum Menü hinzu
-	 * @param label Name des Eintrags
-	 * @param returnValue Konstante, die bei Wahl dieses Eintrags zurückgegeben wird
+	 * Adds a menu item to the menu
+	 * @param label Entry name
+	 * @param returnValue Constant returned when this entry is selected
 	 */
 	public void addEntry(String label, T returnValue) {
 		this.labels.add(label);
@@ -55,8 +55,8 @@ public class Menu<T> {
 	}
 	
 	/**
-	 * Zeigt das Menü an
-	 * @return Die Konstante des ausgewählten Menüeintrags
+	 * Displays the menu
+	 * @return The constant of the selected menu item
 	 */
 	public T show()  {
 		int selection = -1;
@@ -78,7 +78,7 @@ public class Menu<T> {
 			}
 
 			if(selection < 1 || selection > returnValues.size()) {
-				System.err.println("Ungültige Eingabe!");
+				System.err.println("Invalid input!");
 				selection = -1;
 			} 
 		}

@@ -7,13 +7,13 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 
 /**
- * Kleine Helferklasse zum Einlesen von Formulardaten
+ * Small helper class for reading in form data
  */
 public class FormUtil {
 	/**
-	 * Liest einen String vom standard input ein
-	 * @param label Zeile, die vor der Eingabe gezeigt wird
-	 * @return eingelesene Zeile
+	 * Reads a string from the standard input
+	 * @param label Line shown before the input
+	 * @return read line
 	 */
 	public static String readString(String label) {
 		String ret = null;
@@ -30,16 +30,16 @@ public class FormUtil {
 	}
 
 	/**
-	 * Liest einen Boolean vom standard input ein
-	 * @param label Zeile, die vor der Eingabe gezeigt wird
-	 * @return eingelesener Boolean
+	 * Reads a Boolean from the standard input
+	 * @param label Line shown before the input
+	 * @return read Boolean
 	 */
 	public static boolean readBoolean(String label) {
 		boolean ret = false;
 		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 
 		try {
-			System.out.print(label+" (+ oder -): ");
+			System.out.print(label+" (+ or -): ");
 			ret = stdin.readLine().trim().equals("+");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -49,9 +49,9 @@ public class FormUtil {
 	}
 	
 	/**
-	 * Liest einen Integer vom standard input ein
-	 * @param label Zeile, die vor der Eingabe gezeigt wird
-	 * @return eingelesener Integer
+	 * Reads an Integer from the standard input
+	 * @param label Line shown before the input
+	 * @return read Integer
 	 */
 	public static int readInt(String label) {
 		int ret = 0;
@@ -64,7 +64,7 @@ public class FormUtil {
 				ret = Integer.parseInt(line);
 				finished = true;
 			} catch (NumberFormatException e) {
-				System.err.println("Ungültige Eingabe: Bitte geben Sie eine Zahl an!");
+				System.err.println("Invalid entry: Please enter a number!");
 			}
 		}
 		
@@ -72,13 +72,12 @@ public class FormUtil {
 	}
 
 	/**
-	 * Zeigt ein Menü an, über das der Nutzer eine von mehreren Auswahlmöglichkeiten
-	 * selektiert.
+	 * Displays a menu from which the user selects one of several options.
 	 *
-	 * @param label die Beschreibung des Menüs
-	 * @param options die einzelnen Elemente als MenuOptions (Tupel vom Typ (String label, T option))
-	 * @param <T> die Art der Objekte, zwischen denen der Nutzer wählen kann
-	 * @return das Objekt, das der Nutzer ausgewählt hat
+	 * @param label the description of the menu
+	 * @param options the individual elements as MenuOptions (tuples of type (String label, T option))
+	 * @param <T> the type of objects the user can choose between
+	 * @return the object that the user has selected
 	 */
 	public static <T> T readSelection(String label, MenuOption<T>... options) {
 		if (options == null || options.length == 0) return null;
@@ -92,21 +91,21 @@ public class FormUtil {
 	}
 
 	/**
-	 * Liest ein Datum als Folge von Tag, Monat, Jahr aus.
-	 * @param label Zeile, die vor der Eingabe angezeigt wird
-	 * @return ein LocalDate des eingelesenen Datums
+	 * Reads out a date as a sequence of day, month, year.
+	 * @param label Line that is displayed before the input
+	 * @return a LocalDate of the date read in
 	 */
 	public static LocalDate readDate(String label) {
 		while (true) {
-			System.out.println(label + " - Datum eingeben");
-			int day = readInt("Tag");
-			int month = readInt("Monat");
-			int year = readInt("Jahr");
+			System.out.println(label + " - Enter date");
+			int day = readInt("Day");
+			int month = readInt("Month");
+			int year = readInt("Year");
 
 			try {
 				return LocalDate.of(year, month, day);
 			} catch (DateTimeException e) {
-				System.out.println("Ungültiges Datum eingegeben - bitte erneut versuchen!");
+				System.out.println("Invalid date entered - please try again!");
 			}
 		}
 	}

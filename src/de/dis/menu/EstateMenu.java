@@ -24,16 +24,16 @@ public class EstateMenu {
      * Estate menu.
      */
     public void showEstateMenu() {
-        //Menüoptionen
+        //Menu options
         final int NEW_ESTATE = 0;
         final int UPDATE_ESTATE = 1;
         final int BACK = 2;
 
-        //Immobilienverwaltungsmenü
-        Menu<Integer> estateMenu = new Menu("Immobilien-Verwaltung");
-        estateMenu.addEntry("Neue Immobilie", NEW_ESTATE);
-        estateMenu.addEntry("Immobilie bearbeiten", UPDATE_ESTATE);
-        estateMenu.addEntry("Zurück zum Hauptmenü", BACK);
+        //Property management menu
+        Menu<Integer> estateMenu = new Menu("Estate management");
+        estateMenu.addEntry("New estate", NEW_ESTATE);
+        estateMenu.addEntry("Edit estate", UPDATE_ESTATE);
+        estateMenu.addEntry("Back to the main menu", BACK);
 
         //Verarbeite Eingabe
         while (true) {
@@ -47,9 +47,9 @@ public class EstateMenu {
     }
 
     private static EstateType selectEstateType() {
-        return FormUtil.readSelection("Bitte Art der Immobilie auswählen:",
-                new MenuOption<>("Haus", EstateType.HOUSE),
-                new MenuOption<>("Wohnung", EstateType.APARTMENT));
+        return FormUtil.readSelection("Please select the type of estate:",
+                new MenuOption<>("House", EstateType.HOUSE),
+                new MenuOption<>("Apartment", EstateType.APARTMENT));
     }
 
     /**
@@ -65,7 +65,7 @@ public class EstateMenu {
             list.add(apartmentMenuOption);
         }
         MenuOption<Apartment>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Bitte Apartment auswählen:", options);
+        return FormUtil.readSelection("Please select apartment:", options);
     }
 
     /**
@@ -81,7 +81,7 @@ public class EstateMenu {
             list.add(houseMenuOption);
         }
         MenuOption<House>[] options = list.toArray(new MenuOption[0]);
-        return FormUtil.readSelection("Bitte Haus auswählen:", options);
+        return FormUtil.readSelection("Please select house:", options);
     }
 
     /**
@@ -117,29 +117,29 @@ public class EstateMenu {
             if (house == null) return;
 
             do {
-                int selection = FormUtil.readSelection("Bitte das zu bearbeitende Attribut auswählen",
-                        new MenuOption<>(String.format("Stadt (%s)", house.getCity()), CITY),
-                        new MenuOption<>(String.format("Straße (%s)", house.getStreet()), STREET),
-                        new MenuOption<>(String.format("Postleizahl (%s)", house.getPostalCode()), POSTALCODE),
-                        new MenuOption<>(String.format("Hausnummer (%s)", house.getStreetNumber()), STREET_NUMBER),
-                        new MenuOption<>(String.format("Wohnfläche (%s)", house.getSquareArea()), SQUARE_AREA),
-                        new MenuOption<>(String.format("Etagen (%s)", house.getFloors()), FLOORS),
-                        new MenuOption<>(String.format("Preis (%s)", house.getPrice()), PRICE),
-                        new MenuOption<>(String.format("Garten (%s)", house.hasGarden()), GARDEN),
-                        new MenuOption<>("Haus löschen", DELETE),
-                        new MenuOption<>("zurück", BACK));
+                int selection = FormUtil.readSelection("Please select the attribute to be edited",
+                        new MenuOption<>(String.format("City (%s)", house.getCity()), CITY),
+                        new MenuOption<>(String.format("Street (%s)", house.getStreet()), STREET),
+                        new MenuOption<>(String.format("Postal code (%s)", house.getPostalCode()), POSTALCODE),
+                        new MenuOption<>(String.format("Street number (%s)", house.getStreetNumber()), STREET_NUMBER),
+                        new MenuOption<>(String.format("Square area (%s)", house.getSquareArea()), SQUARE_AREA),
+                        new MenuOption<>(String.format("Floors (%s)", house.getFloors()), FLOORS),
+                        new MenuOption<>(String.format("Price (%s)", house.getPrice()), PRICE),
+                        new MenuOption<>(String.format("Garden (%s)", house.hasGarden()), GARDEN),
+                        new MenuOption<>("Remove house", DELETE),
+                        new MenuOption<>("Back", BACK));
 
                 switch (selection) {
-                    case CITY -> house.setCity(FormUtil.readString("Neue Stadt"));
-                    case STREET -> house.setStreet(FormUtil.readString("Neue Straße"));
-                    case POSTALCODE -> house.setPostalCode(FormUtil.readString("Neue Postleizahl"));
-                    case STREET_NUMBER -> house.setStreetNumber(FormUtil.readString("Neue Hausnummer"));
-                    case SQUARE_AREA -> house.setSqareArea(FormUtil.readInt("Neue Wohnfläche"));
-                    case FLOORS -> house.setFloors(FormUtil.readInt("Neue Anzahl Etagen"));
-                    case PRICE -> house.setPrice(FormUtil.readInt("Neuer Preis"));
-                    case GARDEN -> house.setGarden(FormUtil.readBoolean("Garten"));
+                    case CITY -> house.setCity(FormUtil.readString("New city"));
+                    case STREET -> house.setStreet(FormUtil.readString("New street"));
+                    case POSTALCODE -> house.setPostalCode(FormUtil.readString("New postal code"));
+                    case STREET_NUMBER -> house.setStreetNumber(FormUtil.readString("New street number"));
+                    case SQUARE_AREA -> house.setSqareArea(FormUtil.readInt("New square area"));
+                    case FLOORS -> house.setFloors(FormUtil.readInt("New floors number"));
+                    case PRICE -> house.setPrice(FormUtil.readInt("New price"));
+                    case GARDEN -> house.setGarden(FormUtil.readBoolean("Garden"));
                     case DELETE -> {
-                        if (FormUtil.readBoolean("Bitte bestätigen, dass das Haus endgültig gelöscht werden soll")) {
+                        if (FormUtil.readBoolean("Please confirm that the house is to be permanently deleted")) {
                             House.delete(house);
                             remain = false;
                         }
@@ -153,33 +153,33 @@ public class EstateMenu {
             if (apartment == null) return;
 
             do {
-                int selection = FormUtil.readSelection("Bitte das zu bearbeitende Attribut auswählen",
-                        new MenuOption<>(String.format("Stadt (%s)", apartment.getCity()), CITY),
-                        new MenuOption<>(String.format("Straße (%s)", apartment.getStreet()), STREET),
-                        new MenuOption<>(String.format("Postleitzahl (%s)", apartment.getPostalCode()), POSTALCODE),
-                        new MenuOption<>(String.format("Hausnummer (%s)", apartment.getStreetNumber()), STREET_NUMBER),
-                        new MenuOption<>(String.format("Wohnfläche (%s)", apartment.getSquareArea()), SQUARE_AREA),
-                        new MenuOption<>(String.format("Werkstock (%s)", apartment.getFloor()), FLOOR),
-                        new MenuOption<>(String.format("Miete (%s)", apartment.getRent()), RENT),
-                        new MenuOption<>(String.format("Anzahl Zimmer (%s)", apartment.getRooms()), ROOMS),
-                        new MenuOption<>(String.format("Balkon (%s)", apartment.hasBalcony()), BALCONY),
-                        new MenuOption<>(String.format("Küche (%s)", apartment.hasKitchen()), BUILT_IN_KITCHEN),
-                        new MenuOption<>("Haus löschen", DELETE),
-                        new MenuOption<>("zurück", BACK));
+                int selection = FormUtil.readSelection("Please select the attribute to be edited",
+                        new MenuOption<>(String.format("City (%s)", apartment.getCity()), CITY),
+                        new MenuOption<>(String.format("Street (%s)", apartment.getStreet()), STREET),
+                        new MenuOption<>(String.format("Postal code (%s)", apartment.getPostalCode()), POSTALCODE),
+                        new MenuOption<>(String.format("Street number (%s)", apartment.getStreetNumber()), STREET_NUMBER),
+                        new MenuOption<>(String.format("Square area (%s)", apartment.getSquareArea()), SQUARE_AREA),
+                        new MenuOption<>(String.format("Floor (%s)", apartment.getFloor()), FLOOR),
+                        new MenuOption<>(String.format("Rent (%s)", apartment.getRent()), RENT),
+                        new MenuOption<>(String.format("Rooms (%s)", apartment.getRooms()), ROOMS),
+                        new MenuOption<>(String.format("Balcony (%s)", apartment.hasBalcony()), BALCONY),
+                        new MenuOption<>(String.format("Kitchen (%s)", apartment.hasKitchen()), BUILT_IN_KITCHEN),
+                        new MenuOption<>("Delete house", DELETE),
+                        new MenuOption<>("Back", BACK));
 
                 switch (selection) {
-                    case CITY -> apartment.setCity(FormUtil.readString("Neue Stadt"));
-                    case STREET -> apartment.setStreet(FormUtil.readString("Neue Straße"));
-                    case POSTALCODE -> apartment.setPostalCode(FormUtil.readString("Neue Postleizahl"));
-                    case STREET_NUMBER -> apartment.setStreetNumber(FormUtil.readString("Neue Hausnummer"));
-                    case SQUARE_AREA -> apartment.setSqareArea(FormUtil.readInt("Neue Wohnfläche"));
-                    case FLOOR -> apartment.setFloor(FormUtil.readInt("Neuer Stock"));
-                    case RENT -> apartment.setRent(FormUtil.readInt("Neue Miete"));
-                    case ROOMS -> apartment.setRooms(FormUtil.readInt("Neue Anzahl Zimmer"));
-                    case BALCONY -> apartment.setBalcony(FormUtil.readBoolean("Balkon"));
-                    case BUILT_IN_KITCHEN -> apartment.setKitchen(FormUtil.readBoolean("Einbauküche"));
+                    case CITY -> apartment.setCity(FormUtil.readString("New city"));
+                    case STREET -> apartment.setStreet(FormUtil.readString("New street"));
+                    case POSTALCODE -> apartment.setPostalCode(FormUtil.readString("New Postal code"));
+                    case STREET_NUMBER -> apartment.setStreetNumber(FormUtil.readString("New street number"));
+                    case SQUARE_AREA -> apartment.setSqareArea(FormUtil.readInt("New square area"));
+                    case FLOOR -> apartment.setFloor(FormUtil.readInt("New floor"));
+                    case RENT -> apartment.setRent(FormUtil.readInt("New Rent"));
+                    case ROOMS -> apartment.setRooms(FormUtil.readInt("New rooms number"));
+                    case BALCONY -> apartment.setBalcony(FormUtil.readBoolean("Balcony"));
+                    case BUILT_IN_KITCHEN -> apartment.setKitchen(FormUtil.readBoolean("Kitchen"));
                     case DELETE -> {
-                        if (FormUtil.readBoolean("Bitte bestätigen, dass die Wohnung endgültig gelöscht werden soll")) {
+                        if (FormUtil.readBoolean("Please confirm that the apartment is to be permanently deleted")) {
                             Apartment.delete(apartment);
                             remain = false;
                         }
@@ -189,48 +189,48 @@ public class EstateMenu {
             } while (remain);
 
         } else {
-            System.out.println("Immobilientyp " + type + " existiert nicht! Kehre zum Immobilienmenü zurück...");
+            System.out.println("Estate type " + type + " does not exist! Return to the Estate menu...");
         }
     }
 
 
     /**
-     * Legt ein neues Estate an, nachdem der Benutzer
-     * die entprechenden Daten eingegeben hat.
+     * Creates a new estate after the user has
+     * entered the corresponding data.
      */
     public void newEstate() {
         EstateType type = selectEstateType();
 
         if (type == EstateType.HOUSE) {
             House house = House.create(
-                    FormUtil.readString("Stadt"),
-                    FormUtil.readString("Postleitzahl"),
-                    FormUtil.readString("Straße"),
-                    FormUtil.readString("Hausnummer"),
-                    FormUtil.readInt("Fläche"),
+                    FormUtil.readString("City"),
+                    FormUtil.readString("Postal code"),
+                    FormUtil.readString("Street"),
+                    FormUtil.readString("Street number"),
+                    FormUtil.readInt("Square area"),
                     makler,
-                    FormUtil.readInt("Stockwerke"),
-                    FormUtil.readInt("Kaufpreis"),
-                    FormUtil.readBoolean("Garten?")
+                    FormUtil.readInt("Floors"),
+                    FormUtil.readInt("Price"),
+                    FormUtil.readBoolean("Garden?")
             );
-            System.out.println("Haus mit ID " + house.getId() + " wurde erstellt.");
+            System.out.println("House with ID " + house.getId() + " was created.");
         } else if (type == EstateType.APARTMENT) {
             Apartment apartment = Apartment.create(
-                    FormUtil.readString("Stadt"),
-                    FormUtil.readString("Postleitzahl"),
-                    FormUtil.readString("Straße"),
-                    FormUtil.readString("Hausnummer"),
-                    FormUtil.readInt("Fläche"),
+                    FormUtil.readString("City"),
+                    FormUtil.readString("Postal code"),
+                    FormUtil.readString("Street"),
+                    FormUtil.readString("Street number"),
+                    FormUtil.readInt("Square area"),
                     makler,
-                    FormUtil.readInt("Stockwerk"),
-                    FormUtil.readInt("Miete"),
-                    FormUtil.readInt("Zimmer"),
-                    FormUtil.readBoolean("Balkon?"),
-                    FormUtil.readBoolean("Küche?")
+                    FormUtil.readInt("Floor"),
+                    FormUtil.readInt("Rent"),
+                    FormUtil.readInt("Rooms"),
+                    FormUtil.readBoolean("Balcony?"),
+                    FormUtil.readBoolean("Kitchen?")
             );
-            System.out.println("Apartment mit ID " + apartment.getId() + " wurde erstellt.");
+            System.out.println("Apartment with ID " + apartment.getId() + " was created.");
         } else {
-            System.out.println("Immobilientyp " + type + " existiert nicht! Kehre zum Immobilienmenü zurück...");
+            System.out.println("Estate type " + type + " does not exist! Return to the Estate menu...");
         }
     }
 }

@@ -12,18 +12,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Hauptklasse
+ * Main class
  */
 public class Main {
     /**
-     * Startet die Anwendung
+     * Starts the application
      */
     public static void main(String[] args) {
         showMainMenu();
     }
 
     /**
-     * Zeigt das Hauptmenü
+     * Shows the main menu
      */
     public static void showMainMenu() {
         //Menüoptionen
@@ -33,11 +33,11 @@ public class Main {
         final int QUIT = 3;
 
         //Erzeuge Menü
-        Menu<Integer> mainMenu = new Menu("Hauptmenü");
-        mainMenu.addEntry("Makler-Verwaltung", MENU_MAKLER);
-        mainMenu.addEntry("Immobilien-Verwaltung", MENU_ESTATE);
-        mainMenu.addEntry("Vertragsverwaltung", MENU_CONTRACT);
-        mainMenu.addEntry("Beenden", QUIT);
+        Menu<Integer> mainMenu = new Menu("Main menu");
+        mainMenu.addEntry("Broker management", MENU_MAKLER);
+        mainMenu.addEntry("Estate management", MENU_ESTATE);
+        mainMenu.addEntry("Contract management", MENU_CONTRACT);
+        mainMenu.addEntry("End", QUIT);
 
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 
@@ -48,15 +48,15 @@ public class Main {
 
             switch (response) {
                 case MENU_MAKLER -> {
-                    System.out.println("Bitte Master-Passwort zur Makler-Verwaltung eingeben:");
+                    System.out.println("Please enter the master password for broker administration:");
                     try {
                         for (int i = 3; i > 0; i--) {
                             String input = stdin.readLine();
-                            if (input.equals("passwort")) {
+                            if (input.equals("password")) {
                                 MaklerMenu.showMaklerMenu();
                                 break;
                             } else {
-                                System.out.println("Falsches Passwort! Sie haben noch " + (i - 1) + " Versuche");
+                                System.out.println("Wrong password! You still have " + (i - 1) + " tries");
                             }
                         }
                     } catch (IOException e) {
@@ -85,11 +85,11 @@ public class Main {
     private static Makler maklerLogin() {
         Makler m = null;
         while (m == null) {
-            String login = FormUtil.readString("Benutzernamen eingeben:");
+            String login = FormUtil.readString("Enter user name:");
             m = Makler.getByLogin(login);
         }
         for (int i = 0; i < 3; i++) {
-            String password = FormUtil.readString("Passwort eingeben:");
+            String password = FormUtil.readString("Enter password:");
             if (m.comparePassword(password)) return m;
         }
         return null;
